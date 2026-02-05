@@ -1,0 +1,207 @@
+{
+  "meta": {
+    "amVersion": "ForgeRock Access Management 8.1.0-SNAPSHOT Build d2b1c6141dcd7bf8e4fd4874aebeaca5a7e4c8da (2026-January-29 15:09)",
+    "exportDate": "2026-02-05T17:33:11.248Z",
+    "origin": "https://openam-<tenant>/am/json/node-designer/node-type/",
+    "exportedBy": "darinder.shokar@pingidentity.com",
+    "resourceVersion": "1.0"
+  },
+  "nodeTypes": {
+    "c6e6d89db5a74c778ca464ccc38455ca-1": {
+      "serviceName": "c6e6d89db5a74c778ca464ccc38455ca",
+      "displayName": "Set BackChannel State Properties",
+      "description": "This node collect nodeState properties which are then passed down to the back channel journey for consumption",
+      "outcomes": [
+        "Next"
+      ],
+      "outputs": [],
+      "inputs": [],
+      "script": "/**\n * Main function\n */\n\n(function () {\n  logger.error(scriptName + \"Node execution started\");\n\n  //Get node properties\n  var nodeStateProperty = properties.backChannelStateProperty;\n  var attributeList = properties.attributeListProperty;\n\n  //Loop to get and set attributes into the nodeStateProperty nodeState variable\n  var out = {};\n  for (var i = 0; i < attributeList.length; i++) {\n    var k = attributeList[i];\n    var v = nodeState.get(k);\n    if (v !== null && v !== undefined) out[k] = v;\n  }\n  nodeState.putShared(nodeStateProperty, out);\n    logger.error(scriptName + \"Node execution completed\");\n  action.goTo(\"Next\");\n})();",
+      "errorOutcome": true,
+      "tags": [
+        "backChannel",
+        "nodeState",
+        "customNode",
+        "utilities"
+      ],
+      "properties": {
+        "attributeListProperty": {
+          "title": "Attribute list to set",
+          "description": "List of attributes to include in the back channel nodeState object",
+          "type": "STRING",
+          "required": true,
+          "multivalued": true
+        },
+        "backChannelStateProperty": {
+          "title": "Back channel nodeState property",
+          "description": "Property name set in nodeState for the back channel journey to consume",
+          "type": "STRING",
+          "required": true,
+          "defaultValue": "backchannel:data",
+          "multivalued": false
+        }
+      }
+    },
+    "92e8ad0e3610449890fca904dce9bf3d-1": {
+      "serviceName": "92e8ad0e3610449890fca904dce9bf3d",
+      "displayName": "Debugger",
+      "description": "Display the contents of state onscreen to aid troubleshooting",
+      "outcomes": [
+        "Next"
+      ],
+      "outputs": [],
+      "inputs": [],
+      "script": "/**\n * Prints shared, transient state, object attributes, request parameters, headers and Cookies\n */\n\n/**\n * Node outcomes\n */\nvar nodeOutcomes = {\n    NEXT: \"Next\"\n};\n\n/**\n * Main\n */\n\n(function() {\n    logger.debug(\"node executing\");\n    if (callbacks.isEmpty()) {\n      \n        // nodeState\n        nodeState.keys().toArray().forEach(\n            function(key) {\n                var value = nodeState.get(key);\n                callbacksBuilder.stringAttributeInputCallback(key, \"nodeState.\".concat(key), value, false);\n            }\n        );\n      \n        // objectAttributes\n        var oa = nodeState.getObject(\"objectAttributes\");\n        if (!!oa) {\n            Object.keys(oa).forEach(\n                function(key) {\n                    callbacksBuilder.stringAttributeInputCallback(key, \"objectAttributes.\".concat(key), oa.get(key), false);\n                }\n            );\n        }\n      \n        // Cookies\n        var cookieHeader = requestHeaders.get(\"cookie\");\n        if (!!cookieHeader) {\n        var cookies = cookieHeader.get(0).split(\";\");\n        cookies.forEach(\n            function(key) {\n                var cookieSpec = key.split(\"=\");\n                callbacksBuilder.stringAttributeInputCallback(cookieSpec[0].trim(), \"Cookies.\".concat(cookieSpec[0].trim()), cookieSpec[1].trim(), false);\n            }\n        ); \n        }\n      \n        // requestParameters \n        var requestParamKeys = Object.keys(requestParameters);\n        requestParamKeys.forEach(\n            function(key) {\n                var value = requestParameters.get(key).get(0);\n                callbacksBuilder.stringAttributeInputCallback(key, \"requestParameters.\".concat(key), value, false);\n            }\n        );\n\n        // requestHeaders\n        var requestHeaderKeys = Object.keys(requestHeaders);\n        requestHeaderKeys.forEach(\n            function(key) {\n                var value = requestHeaders.get(key).get(0);\n                callbacksBuilder.stringAttributeInputCallback(key, \"requestHeaders.\".concat(key), value, false);\n            }\n        );\n    } else {\n        action.goTo(nodeOutcomes.NEXT);\n    }\n})();",
+      "errorOutcome": false,
+      "tags": [
+        "debug",
+        "nodeState",
+        "customNode",
+        "v1_0",
+        "utilities"
+      ],
+      "properties": {}
+    },
+    "2520d6e218394f8881d16dd684e9ce60-1": {
+      "serviceName": "2520d6e218394f8881d16dd684e9ce60",
+      "displayName": "nodeState Normalizer",
+      "description": "Utility Custom Node to convert nodeState attributes received from the front channel into normalized user nodeState attributes",
+      "outcomes": [
+        "Next",
+        "Error"
+      ],
+      "outputs": [],
+      "inputs": [],
+      "script": "/**\n * Main function\n * Converts state attributes received from the front channel journey into standard stateAttributes\n * For each entry in nodeStateAttributes (e.g. customer._id):\n *  - retrieve the value from nodeState using the full key\n *  - error if not found (null/undefined)\n *  - write it back into shared nodeState using the unprefixed key (e.g. _id)\n */\n\n(function () {\n\n    logger.error(scriptName + \": Node execution started\");\n\n    var nodeOutcomes = {\n        NEXT: \"Next\",\n        ERROR: \"Error\"\n    };\n\n    // Get node properties (Java List)\n    var nodeStateAttributes = properties.nodeStateAttributes;\n\n    logger.error(scriptName + \": nodeStateAttributes are: \" + nodeStateAttributes);\n\n    try {\n        for (var i = 0; i < nodeStateAttributes.size(); i++) {\n\n            // e.g. \"customer._id\"\n            var fullKey = String(nodeStateAttributes.get(i));\n\n            // Retrieve from nodeState using the prefixed key\n            var value = nodeState.get(fullKey);\n\n            // Error if missing\n            if (value == null) {\n                logger.error(scriptName + \": Missing nodeState key: \" + fullKey);\n                action.goTo(nodeOutcomes.ERROR);\n                return;\n            }\n\n            // Strip prefix (exactly one dot)\n            var parts = fullKey.split(\".\");\n            var shortKey = parts[1]; // e.g. \"_id\"\n\n            // Special-case userName → username\n            if (shortKey === \"userName\") {\n                shortKey = \"username\";\n            }\n            // Store without prefix for downstream nodes\n            nodeState.putShared(shortKey, value);\n\n            logger.debug(scriptName + \": Set nodeState '\" + shortKey + \"' from '\" + fullKey + \"'\");\n        }\n\n        logger.error(scriptName + \": Node execution completed\");\n        action.goTo(nodeOutcomes.NEXT);\n\n    } catch (e) {\n        logger.error(scriptName + \": unexpected error\");\n        logger.debug(scriptName + \": full exception: {}\", e);\n        action.goTo(nodeOutcomes.ERROR);\n    }\n\n})();",
+      "errorOutcome": false,
+      "tags": [
+        "customNode",
+        "nodeState",
+        "frontChannel",
+        "backChannel",
+        "utilities"
+      ],
+      "properties": {
+        "nodeStateAttributes": {
+          "title": "nodeState attributes to convert",
+          "description": "List of nodeState attributes received from the Front Channel which need to be normalized to standard user nodeState attributes",
+          "type": "STRING",
+          "required": true,
+          "defaultValue": [
+            "customer._id",
+            "customer.mail",
+            "customer.userName"
+          ],
+          "multivalued": true
+        }
+      }
+    },
+    "d0a055acaedd486b91fa88eddc6fccdb-1": {
+      "serviceName": "d0a055acaedd486b91fa88eddc6fccdb",
+      "displayName": "User Message to Display",
+      "description": "A node which displays a message to display to the user ",
+      "outcomes": [
+        "Success"
+      ],
+      "outputs": [],
+      "inputs": [],
+      "script": "/**\n * Main function\n */\n\n(function () {\n  logger.error(scriptName + \"Node execution started\");\n\n  if (callbacks.isEmpty()) {\n    var userMessage = properties.message;\n    callbacksBuilder.textOutputCallback(0, userMessage);\n  } else {\n    logger.error(scriptName + \"Node execution completed\");\n    action.goTo(\"Success\");\n  }\n})();",
+      "errorOutcome": false,
+      "tags": [
+        "success",
+        "userMessage",
+        "customNode",
+        "utilities"
+      ],
+      "properties": {
+        "message": {
+          "title": "Message to display",
+          "description": "Message to display to the user",
+          "type": "STRING",
+          "required": true,
+          "multivalued": false
+        }
+      }
+    },
+    "83277447b5a24a6fa8a049a5ef90c8e8-1": {
+      "serviceName": "83277447b5a24a6fa8a049a5ef90c8e8",
+      "displayName": "Get IDM User Attributes",
+      "description": "A Custom Node which queries IDM based on a user search attributes retrieved from sharedState and either sets all returned attributes in sharedState or a defined subset of attributes in sharedState. Additional outcomes handle user not found, no results returned from IDM or general script errors. ",
+      "outcomes": [
+        "Next",
+        "User_Not_Found",
+        "Error"
+      ],
+      "outputs": [],
+      "inputs": [],
+      "script": "/**\n * Main function\n * Queries IDM based on a user defined query attribute and a attribute value acquired from sharedState\n * Returns either all attributes or a defined subset of attributes\n * Sets these attributes in nodeState for downstream consumption\n * Note if any attributes are null or [] they are not stored in nodeState\n * Errors if user not found, IDM returns no query results, or a generic script error occurs\n */\n\n(function () {\n\n  logger.error(scriptName + \": Node execution started\");\n\n  /**\n * Node outcomes\n */\n  var nodeOutcomes = {\n    NEXT: \"Next\",\n    NOTFOUND: \"User_Not_Found\",\n    ERROR: \"Error\"\n  };\n\n  //Get node properties\n  var realm = properties.realm;\n  var queryAttributeName = properties.attributeName;\n  var queryAttributeValue = properties.attributeValue;\n  var allAttributes = properties.allAttributes;\n  var subsetAttributes = properties.subsetAttributes;\n  var prefixNodeState = properties.prefixNodeState;\n  var prefixNodeStateValue = properties.prefixNodeStateValue;\n\n  try {\n    // Get user attribute from nodeState\n    var user = nodeState.get(queryAttributeValue);\n\n    // User attribute missing → NOTFOUND\n    if (user == null) {\n      logger.error(scriptName + \": user attribute not found in nodeState\");\n      action.goTo(nodeOutcomes.NOTFOUND);\n      return;\n    }\n\n    // Determine attribute projection\n    var attributes = null;\n    if (allAttributes === true) {\n      attributes = [\"*\"];\n    }\n    else {\n      attributes = subsetAttributes;\n    }\n\n    // Query IDM\n    var queryRes = openidm.query(\n      \"managed/\" + realm + \"_user\",\n      { \"_queryFilter\": \"/\" + queryAttributeName + \" eq '\" + user + \"'\" },\n      attributes);\n\n    // User not found → NOTFOUND\n    if (!queryRes || !queryRes.result || queryRes.result.length === 0) {\n      logger.error(scriptName + \": No IDM user found for user: \", user);\n      action.goTo(nodeOutcomes.NOTFOUND);\n      return;\n    }\n\n    // User found\n    var userObj = queryRes.result[0];\n\n    // Copy attributes into shared node state\n    // Explicitly exclude _rev\n    Object.keys(userObj).forEach(function (key) {\n      if (key === \"_rev\") {\n        return; // always exclude\n      }\n      var value = userObj[key];\n\n      //if to ensure null and IDM returned [] values not added to sharedState\n      if (value != null && !((Array.isArray(value) && value.length === 0) || (value.size && value.size() === 0))) {\n        var targetKey = prefixNodeState === true\n      ? prefixNodeStateValue + \".\" + key\n      : key;\n        nodeState.putShared(targetKey, value);\n      }\n    });\n\n    // Success\n    logger.debug(scriptName + \": Found user: \" + user);\n    logger.error(scriptName + \" Node execution completed\");\n    action.goTo(nodeOutcomes.NEXT);\n\n  } catch (e) {\n    logger.error(scriptName + \": unexpected error\");\n    logger.debug(scriptName + \": full exception: {}\", e);\n    action.goTo(nodeOutcomes.ERROR);\n  }\n\n})();",
+      "errorOutcome": false,
+      "tags": [
+        "customNode",
+        "idm",
+        "nodeState",
+        "utilities"
+      ],
+      "properties": {
+        "realm": {
+          "title": "Realm query should be executed against",
+          "description": "Choose either alpha or bravo realm",
+          "type": "STRING",
+          "required": true,
+          "defaultValue": "alpha",
+          "multivalued": false
+        },
+        "attributeName": {
+          "title": "Query search attribute name",
+          "description": "Attribute used to initiate the search query",
+          "type": "STRING",
+          "required": true,
+          "defaultValue": "userName",
+          "multivalued": false
+        },
+        "attributeValue": {
+          "title": "nodeState user query attribute",
+          "description": "The attribute value to retrieve from nodeState to initiate the user query",
+          "type": "STRING",
+          "required": true,
+          "defaultValue": "username",
+          "multivalued": false
+        },
+        "allAttributes": {
+          "title": "Return all user attributes",
+          "description": "Select this option to return all user attributes and set each in nodeState",
+          "type": "BOOLEAN",
+          "required": true,
+          "defaultValue": false,
+          "multivalued": false
+        },
+        "subsetAttributes": {
+          "title": "Attributes to return from the query",
+          "description": "List of attributes to return from the query and set in nodeState. Only active if return all user attributes is set to false.",
+          "type": "STRING",
+          "required": true,
+          "defaultValue": [
+            "_id"
+          ],
+          "multivalued": true
+        },
+        "prefixNodeState": {
+          "title": "Prefix nodeState attributes",
+          "description": "Option to prefix the nodeState names for the returned user attributes",
+          "type": "BOOLEAN",
+          "required": true,
+          "defaultValue": false,
+          "multivalued": false
+        },
+        "prefixNodeStateValue": {
+          "title": "Prefix to use for attribute nodeState names",
+          "description": "Name to use to prefix nodeState names for all retrieved attribute. Note only active if the prefix nodeState option is enabled",
+          "type": "STRING",
+          "required": false,
+          "defaultValue": "user",
+          "multivalued": false
+        }
+      }
+    }
+  }
+}
