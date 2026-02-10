@@ -9,7 +9,8 @@ In order to deploy this reference implementation follow the following steps to:
 3. Create the required Environment Secrets and Variables (ESVs) in P1AIC
 4. Import the custom nodes
 5. Import the journeys
-6. Test the implementation
+6. Configure an email template
+7. Test the implementation
 
 ### Setup a PingOne Environment
 
@@ -61,10 +62,35 @@ Two Journeys should now have imported:
 | UserPasswordResetWithP1Verify | Back channel user verification and password reset journey|
 
 
-
-
-## Example Usage
-
 ![Alt text](images/helpdesk_front_channel.png?raw=true "Helpdesk_Front_Channel Journey")
 
 ![Alt text](images/customer_back_channel.png?raw=true "Customer Back_Channel Journey")
+
+### Configure an email template
+
+Configure a sample email template using [these](https://docs.pingidentity.com/pingoneaic/tenants/email-templates.html) instructions. The key points are:
+* Set the tempalte Id to `verifyResetPassword`
+* The subject to `Ping Identity Reset Password`
+* The email contents to:
+```
+### Verify email to reset password
+
+Hi {{object.givenName}}
+
+Hit the link below to reset your password.
+
+[Reset Password Link]({{object.resumeURI}})
+```
+
+## Testing
+
+In order to test the implementation:
+1. Create a helpdesk user and a customer/end user. For the helpdesk user set `frUnindexedString1` to admin. For the customer/end user set a valid email address
+2. Navigate to the helpdesk journey with a non default browser (else you will get session clashes) https://openam-<tenant>/am/XUI/?realm=alpha&authIndexType=service&authIndexValue=HelpDeskResetWithP1Verify
+3. Login with the helpdesk user, enter the email address of the end user, this journey then polls until the back channel journey is complete
+4. Meanwhile the customer/end user will receive an email address, on click another journey will execute for the user to execute the Verify flow and on success will have the ability to reset their password and automatically gain access to the system.
+
+Demo Video:
+
+
+
