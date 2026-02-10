@@ -2,7 +2,7 @@
   "meta": {
     "origin": "https://openam-<tenant>/platform/?realm=alpha#/journeys",
     "exportedBy": "darinder.shokar@pingidentity.com",
-    "exportDate": "2026-02-10T17:13:27.011Z",
+    "exportDate": "2026-02-10T17:59:31.345Z",
     "exportTool": "platform-admin ui tree export",
     "exportToolVersion": "1.0",
     "treesSelectedForExport": [
@@ -15,7 +15,7 @@
     "HelpDeskResetWithP1Verify": {
       "tree": {
         "_id": "HelpDeskResetWithP1Verify",
-        "_rev": "-228694996",
+        "_rev": "-1384189552",
         "identityResource": "managed/alpha_user",
         "entryNodeId": "59401cf8-9618-4a58-b13c-d38d8515b73a",
         "innerTreeOnly": false,
@@ -54,7 +54,7 @@
             "connections": {
               "User_Not_Found": "e301438c-0bd0-429c-ab0c-66126501069a",
               "Error": "e301438c-0bd0-429c-ab0c-66126501069a",
-              "Next": "101c16c7-f436-4bd4-b910-6f1c1215d740"
+              "Next": "4c41752f-ebe9-4ce6-b8d1-ff5211a405d9"
             },
             "nodeType": "designer-83277447b5a24a6fa8a049a5ef90c8e8",
             "displayName": "Get IDM User Attributes"
@@ -148,15 +148,6 @@
             },
             "nodeType": "SetSuccessUrlNode",
             "displayName": "Success URL"
-          },
-          "101c16c7-f436-4bd4-b910-6f1c1215d740": {
-            "x": 1220,
-            "y": 666.8095179966518,
-            "connections": {
-              "Next": "4c41752f-ebe9-4ce6-b8d1-ff5211a405d9"
-            },
-            "nodeType": "designer-92e8ad0e3610449890fca904dce9bf3d",
-            "displayName": "Debugger"
           }
         },
         "staticNodes": {
@@ -496,22 +487,6 @@
               "displayName": "Outcome"
             }
           ]
-        },
-        "101c16c7-f436-4bd4-b910-6f1c1215d740": {
-          "_id": "101c16c7-f436-4bd4-b910-6f1c1215d740",
-          "_rev": "-13941205",
-          "_type": {
-            "_id": "designer-92e8ad0e3610449890fca904dce9bf3d",
-            "name": "Debugger",
-            "collection": true,
-            "version": "1.0"
-          },
-          "_outcomes": [
-            {
-              "id": "Next",
-              "displayName": "Next"
-            }
-          ]
         }
       },
       "innerNodes": {
@@ -590,7 +565,7 @@
           "createdBy": "id=80f5c192-7bf5-4c64-bc37-b7f5664ac7f3,ou=user,ou=am-config",
           "creationDate": 1770287518003,
           "lastModifiedBy": "id=80f5c192-7bf5-4c64-bc37-b7f5664ac7f3,ou=user,ou=am-config",
-          "lastModifiedDate": 1770295082278,
+          "lastModifiedDate": 1770746335300,
           "evaluatorVersion": "2.0"
         },
         "7925d6be-f29c-4e33-8f2b-766e88664bb3": {
@@ -604,7 +579,7 @@
           "createdBy": "id=80f5c192-7bf5-4c64-bc37-b7f5664ac7f3,ou=user,ou=am-config",
           "creationDate": 1770240165386,
           "lastModifiedBy": "id=80f5c192-7bf5-4c64-bc37-b7f5664ac7f3,ou=user,ou=am-config",
-          "lastModifiedDate": 1770286020856,
+          "lastModifiedDate": 1770746335310,
           "evaluatorVersion": "2.0"
         }
       },
