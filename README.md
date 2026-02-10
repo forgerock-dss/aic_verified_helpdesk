@@ -1,96 +1,141 @@
 # aic_verified_helpdesk
-Sample P1AIC journey to demonstrate integration with P1Verify for the verified helpdesk usecase.
 
-## Setup Steps
+Sample **PingOne Advanced Identity Cloud (P1AIC)** journeys demonstrating integration with **PingOne Verify** for a **Verified Helpdesk** use case.
 
-In order to deploy this reference implementation follow the following steps to:
-1. Setup a PingOne environment
-2. Create a Worker Application in the PingOne tenant
-3. Create the required Environment Secrets and Variables (ESVs) in P1AIC
-4. Import the custom nodes
-5. Import the journeys
-6. Configure an email template
-7. Test the implementation
+This reference implementation shows how a helpdesk operator can securely initiate a user verification flow, allowing an end user to reset their password only after successful identity verification.
 
-### Setup a PingOne Environment
+---
 
-In this section we’ll create a PingOne environment with PingOne Protect deployed:
+## Setup Overview
 
-1. If you have a PingOne subscription navigate to [this](https://www.pingidentity.com/en.html) page and hit “Sign On” at the top right of the page and login.
-2. On success you’ll be re-directed to the https://console.pingone.eu/ page. If you don’t have a subscription, you can get a demo environment through [this](this) link. Enter your business email address and hit “Try Ping”.
-3. From the PingOne Console > Hit Environments on the left panel > Blue + icon next to Environments.
-4. Select Build your own solution > click PingOne Verify > Hit Next.
-5. On the environment name enter an appropriate name, for example `env-pingoneaic-mycompany-ew2-sandbox1` > Select the region > Hit Finish.
+To deploy this reference implementation, complete the following steps:
 
-### Create a Worker Application in a P1AIC Tenant
+1. Set up a PingOne environment  
+2. Create a Worker Application in the PingOne tenant  
+3. Create the required Environment Secrets and Variables (ESVs) in P1AIC  
+4. Import the custom nodes  
+5. Import the journeys  
+6. Configure an email template  
+7. Test the implementation  
 
-1. Follow [these](https://docs.pingidentity.com/pingoneaic/integrations/pingone-set-up-workers.html#create-a-worker-application-in-each-mapped-pingone-environment) Task 2 steps to create OIDC credentials for the PingOne AIC tenant to integrate with PingOne Verify. Note the PingOne API and Authorization URLs, for example https://auth.pingone.com, https://auth.pingone.eu etc.
+---
 
-### Create a PingOne Service in P1AIC
+## Set Up a PingOne Environment
 
-1. Follow [these](https://docs.pingidentity.com/pingoneaic/integrations/pingone-set-up-workers.html#create-esvs-for-the-worker-application-credentials-in-each-tenant-environment) Task 3 steps to create a Service called `PingOne Worker AIC
-` using the three ESVs which map to the PingOne Worker Credentials from the last section. After creating the configuration set the PingOne API Server URL and Authorization Server URL as per the address noted in the “Create a Worker Application” section
+In this section, you will create a PingOne environment with **PingOne Verify** enabled.
 
-### Import the Custom Nodes
+1. If you have an existing PingOne subscription, sign in via the  
+   [Ping Identity portal](https://www.pingidentity.com/en.html).
+2. After successful login, you will be redirected to the PingOne Console  
+   (for example, the [EU Console](https://console.pingone.eu)).
+3. From the PingOne Console, select **Environments** from the left-hand navigation and click the **+** icon.
+4. Choose **Build your own solution**, select **PingOne Verify**, and click **Next**.
+5. Enter an environment name (for example:  
+   `env-pingoneaic-mycompany-ew2-sandbox1`), select the region, and click **Finish**.
 
-1. Download the Custom Nodes JSON [file](custom_nodes/Custom-Nodes.json) to your local machine/
-2. From the P1AIC platform admin UI, expand Journeys on the left navigation panel > Custom Nodes
-3. Click Import Nodes (or Import if other Custom Nodes are present) > Browse > open custom-nodes.json > Import Nodes > Done.
+---
 
-5 new Custom Nodes should import:
+## Create a Worker Application in a P1AIC Tenant
+
+1. Follow **Task 2** in the documentation below to create OIDC credentials for the PingOne AIC tenant:  
+   [Create a Worker Application](https://docs.pingidentity.com/pingoneaic/integrations/pingone-set-up-workers.html#create-a-worker-application-in-each-mapped-pingone-environment)
+2. Note the **PingOne API Server URL** and **Authorization Server URL**  
+   (for example: `https://auth.pingone.com`, `https://auth.pingone.eu`).
+
+---
+
+## Create a PingOne Service in P1AIC
+
+1. Follow **Task 3** in the documentation below to create the required Environment Secrets and Variables (ESVs):  
+   [Create ESVs for Worker Credentials](https://docs.pingidentity.com/pingoneaic/integrations/pingone-set-up-workers.html#create-esvs-for-the-worker-application-credentials-in-each-tenant-environment)
+2. Create a service named **PingOne Worker AIC** using the three ESVs mapped to the PingOne Worker credentials.
+3. Configure the **PingOne API Server URL** and **Authorization Server URL** using the values noted in the previous section.
+
+---
+
+## Import Custom Nodes
+
+1. Download the Custom Nodes JSON file:  
+   [Custom-Nodes.json](custom_nodes/Custom-Nodes.json)
+2. In the P1AIC Admin UI, navigate to **Journeys → Custom Nodes**.
+3. Select **Import Nodes**, browse to the JSON file, and complete the import.
+
+The following five Custom Nodes will be imported:
 
 | Node | Purpose |
-|------|----------|
-| Get IDM User Attributes | Retrieves user attributes from IDM and stores in sharedState for later consumption|
-| Debugger | Debug node to output contents of authentication state|
-| nodeState Normalizer | Removes nodeState prefix values|
-| Set BackChannel State Properties | Prepares the nodeState attributes to pass to the back channel journey|
-| User Message to Display | Utility node to display a configurable message to the user|
+|-----|---------|
+| Get IDM User Attributes | Retrieves user attributes from IDM and stores them in sharedState |
+| Debugger | Outputs authentication state for debugging |
+| nodeState Normalizer | Removes `nodeState` prefixes |
+| Set BackChannel State Properties | Prepares attributes for the back-channel journey |
+| User Message to Display | Displays configurable messages to the user |
 
-### Journey import
+---
 
-1. Download the Journey export from [here](journey_exports/P1AIC-HelpDesk-Journeys.json) to your local machine.
-2. From the P1AIC platform admin UI, expand Journeys on the left navigation panel > click Journeys > Import.
-3. If need be take a backup or skip.
-Click Browse > find the P1AIC-HelpDesk-Journeys.json file > Open > Next > Start Import.
+## Import Journeys
 
-Two Journeys should now have imported:
+1. Download the journey export file:  
+   [P1AIC-HelpDesk-Journeys.json](journey_exports/P1AIC-HelpDesk-Journeys.json)
+2. In the P1AIC Admin UI, navigate to **Journeys → Journeys → Import**.
+3. Upload the JSON file and complete the import.
+
+The following journeys will be created:
 
 | Journey | Purpose |
-|------|----------|
-| HelpDeskResetWithP1Verify | Front channel helpdesk journey|
-| UserPasswordResetWithP1Verify | Back channel user verification and password reset journey|
+|--------|---------|
+| HelpDeskResetWithP1Verify | Front-channel helpdesk journey |
+| UserPasswordResetWithP1Verify | Back-channel user verification and password reset journey |
 
+### Journey Diagrams
 
-![Alt text](images/helpdesk_front_channel.png?raw=true "Helpdesk_Front_Channel Journey")
+**Front-Channel Helpdesk Journey**
 
-![Alt text](images/customer_back_channel.png?raw=true "Customer Back_Channel Journey")
+![Helpdesk Front Channel](images/helpdesk_front_channel.png?raw=true)
 
-### Configure an email template
+**Back-Channel Customer Journey**
 
-Configure a sample email template using [these](https://docs.pingidentity.com/pingoneaic/tenants/email-templates.html) instructions. The key points are:
-* Set the template Id to `verifyResetPassword`
-* The subject to `Ping Identity Reset Password`
-* The email contents to:
-```
+![Customer Back Channel](images/customer_back_channel.png?raw=true)
+
+---
+
+## Configure Email Template
+
+Configure an email template using the following documentation:  
+[PingOne AIC Email Templates](https://docs.pingidentity.com/pingoneaic/tenants/email-templates.html)
+
+Key configuration values:
+- **Template ID:** `verifyResetPassword`
+- **Subject:** `Ping Identity Reset Password`
+- **Email body:**
+
+```md
 ### Verify email to reset password
 
 Hi {{object.givenName}}
 
-Hit the link below to reset your password.
+Click the link below to reset your password:
 
 [Reset Password Link]({{object.resumeURI}})
 ```
 
+---
+
 ## Testing
 
-In order to test the implementation:
-1. Create a helpdesk user and a customer/end user. For the helpdesk user set `frUnindexedString1` to admin. For the customer/end user set a valid email address
-2. Navigate to the helpdesk journey with a non default browser (else you will get session clashes) https://openam-<tenant>/am/XUI/?realm=alpha&authIndexType=service&authIndexValue=HelpDeskResetWithP1Verify
-3. Login with the helpdesk user, enter the email address of the end user, this journey then polls until the back channel journey is complete
-4. Meanwhile the customer/end user will receive an email address, on click another journey will execute for the user to execute the Verify flow and on success will have the ability to reset their password and automatically gain access to the system.
+1. Create:
+   - A **helpdesk user** with `frUnindexedString1=admin`
+   - A **customer/end user** with a valid email address
+2. Launch the helpdesk journey in a non-default browser to avoid session clashes:
+   ```text
+   https://openam-<tenant>/am/XUI/?realm=alpha&authIndexType=service&authIndexValue=HelpDeskResetWithP1Verify
+   ```
+3. Log in as the helpdesk user and enter the end user’s email address.
+   - The journey will poll until the back-channel flow completes.
+4. The end user receives an email, completes the verification flow, and can then reset their password and access the system.
 
-Demo Video:
+---
 
-https://youtu.be/mXLkD0dogEI
+## Demo Video
 
+Watch the full demo on  
+[YouTube](https://youtu.be/mXLkD0dogEI)
