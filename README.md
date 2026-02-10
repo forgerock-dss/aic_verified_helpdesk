@@ -32,7 +32,7 @@ In this section we’ll create a PingOne environment with PingOne Protect deploy
 
 ### Import the Custom Nodes
 
-1. Download the Custom Nodes JSON [file](custom_nodes/custom-nodes.json) to your local machine/
+1. Download the Custom Nodes JSON [file](custom_nodes/Custom-Nodes.json) to your local machine/
 2. From the P1AIC platform admin UI, expand Journeys on the left navigation panel > Custom Nodes
 3. Click Import Nodes (or Import if other Custom Nodes are present) > Browse > open custom-nodes.json > Import Nodes > Done.
 
@@ -46,7 +46,7 @@ In this section we’ll create a PingOne environment with PingOne Protect deploy
 | Set BackChannel State Properties | Prepares the nodeState attributes to pass to the back channel journey|
 | User Message to Display | Utility node to display a configurable message to the user|
 
-
+### Journey import
 
 
 
