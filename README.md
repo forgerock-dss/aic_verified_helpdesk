@@ -27,7 +27,28 @@ In this section we’ll create a PingOne environment with PingOne Protect deploy
 
 ### Create a PingOne Service in P1AIC
 
-1. Follow [these](https://docs.pingidentity.com/pingoneaic/integrations/pingone-set-up-workers.html#create-esvs-for-the-worker-application-credentials-in-each-tenant-environment) steps to create the three ESVs that map to the PingOne Worker Credentials from the last section.
+1. Follow [these](https://docs.pingidentity.com/pingoneaic/integrations/pingone-set-up-workers.html#create-esvs-for-the-worker-application-credentials-in-each-tenant-environment) Task 3 steps to create a Service called `PingOne Worker AIC
+` using the three ESVs which map to the PingOne Worker Credentials from the last section. After creating the configuration set the PingOne API Server URL and Authorization Server URL as per the address noted in the “Create a Worker Application” section
+
+### Import the Custom Nodes
+
+1. Download the Custom Nodes JSON [file](custom_nodes/custom-nodes.json) to your local machine/
+2. From the P1AIC platform admin UI, expand Journeys on the left navigation panel > Custom Nodes
+3. Click Import Nodes (or Import if other Custom Nodes are present) > Browse > open custom-nodes.json > Import Nodes > Done.
+
+5 new Custom Nodes should import:
+
+| Node | Purpose |
+|------|----------|
+| Get IDM User Attributes | Retrieves user attributes from IDM and stores in sharedState for later consumption|
+| Debugger | Debug node to output contents of authentication state|
+| nodeState Normalizer | Removes nodeState prefix values|
+| Set BackChannel State Properties | Prepares the nodeState attributes to pass to the back channel journey|
+| User Message to Display | Utility node to display a configurable message to the user|
+
+
+
+
 
 
 ## Example Usage
