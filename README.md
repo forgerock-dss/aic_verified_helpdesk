@@ -69,7 +69,7 @@ Two Journeys should now have imported:
 ### Configure an email template
 
 Configure a sample email template using [these](https://docs.pingidentity.com/pingoneaic/tenants/email-templates.html) instructions. The key points are:
-* Set the tempalte Id to `verifyResetPassword`
+* Set the template Id to `verifyResetPassword`
 * The subject to `Ping Identity Reset Password`
 * The email contents to:
 ```
@@ -92,5 +92,5 @@ In order to test the implementation:
 
 Demo Video:
 
-
+https://youtu.be/mXLkD0dogEI
 
