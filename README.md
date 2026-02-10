@@ -23,7 +23,7 @@ In this section we’ll create a PingOne environment with PingOne Protect deploy
 
 ### Create a Worker Application in a P1AIC Tenant
 
-1. Follow [these](https://docs.pingidentity.com/pingoneaic/integrations/pingone-set-up-workers.html#create-a-worker-application-in-each-mapped-pingone-environment) steps to create OIDC credentials for the PingOne AIC tenant to integrate with PingOne Verify. Note the PingOne API and Authorization URLs, for example https://auth.pingone.com, https://auth.pingone.eu etc.
+1. Follow [these](https://docs.pingidentity.com/pingoneaic/integrations/pingone-set-up-workers.html#create-a-worker-application-in-each-mapped-pingone-environment) Task 2 steps to create OIDC credentials for the PingOne AIC tenant to integrate with PingOne Verify. Note the PingOne API and Authorization URLs, for example https://auth.pingone.com, https://auth.pingone.eu etc.
 
 ### Create a PingOne Service in P1AIC
 
