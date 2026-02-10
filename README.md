@@ -48,6 +48,18 @@ In this section we’ll create a PingOne environment with PingOne Protect deploy
 
 ### Journey import
 
+1. Download the Journey export from [here](journey_exports/P1AIC-HelpDesk-Journeys.json) to your local machine.
+2. From the P1AIC platform admin UI, expand Journeys on the left navigation panel > click Journeys > Import.
+3. If need be take a backup or skip.
+Click Browse > find the P1AIC-HelpDesk-Journeys.json file > Open > Next > Start Import.
+
+Two Journeys should now have imported:
+
+| Journey | Purpose |
+|------|----------|
+| HelpDeskResetWithP1Verify | Front channel helpdesk journey|
+| UserPasswordResetWithP1Verify | Back channel user verification and password reset journey|
+
 
 
 
