@@ -1,8 +1,32 @@
 # aic_verified_helpdesk
 
-Sample **PingOne Advanced Identity Cloud (P1AIC)** journeys demonstrating integration with **PingOne Verify** for a **Verified Helpdesk** use case.
+---
 
-This reference implementation shows how a helpdesk operator can securely initiate a user verification flow, allowing an end user to reset their password only after successful identity verification.
+## Introduction
+
+This project provides a reference implementation of a Verified Helpdesk password reset pattern using PingOne Advanced Identity Cloud (P1AIC) integrated with PingOne Verify.
+
+The solution separates the helpdesk and end-user experiences into two coordinated journeys:
+	•	HelpDeskResetWithP1Verify – A front-channel journey where a helpdesk operative authenticates, passes an admin role check, captures the customer’s email address, and initiates a secure back-channel transaction.
+	•	UserPasswordResetWithP1Verify – A back-channel journey where the customer completes a PingOne Verify identity check before being allowed to reset their password.
+
+The helpdesk journey securely invokes the user journey using a back-channel transaction, sends a magic link via a templated email, and polls for completion status. The user journey performs identity normalisation, optional PingOne user creation, QR-based PingOne Verify evaluation, and enforces retry limits before permitting a password reset.
+
+This architecture ensures:
+	•	Role-based control over helpdesk operations
+	•	Strong identity verification before credential reset
+	•	Clear separation of operator and customer flows
+	•	Secure orchestration using P1AIC back-channel capabilities
+
+The implementation is intended as a reusable blueprint for organisations seeking to modernise helpdesk password reset processes with high assurance identity verification.
+
+---
+
+## Dependencies
+
+This project has the following dependencies:
+	•	Creation of a helpdesk user where `frUnindexedString1` is set to a value of admin
+   •  Creation of a customer user where a valid email address is set
 
 ---
 
@@ -122,16 +146,13 @@ Click the link below to reset your password:
 
 ## Testing
 
-1. Create:
-   - A **helpdesk user** with `frUnindexedString1=admin`
-   - A **customer/end user** with a valid email address
-2. Launch the helpdesk journey in a non-default browser to avoid session clashes:
+1. Launch the helpdesk journey in a non-default browser to avoid session clashes:
    ```text
    https://openam-<tenant>/am/XUI/?realm=alpha&authIndexType=service&authIndexValue=HelpDeskResetWithP1Verify
    ```
-3. Log in as the helpdesk user and enter the end user’s email address.
+2. Log in as the helpdesk user and enter the end user’s email address.
    - The journey will poll until the back-channel flow completes.
-4. The end user receives an email, completes the verification flow, and can then reset their password and access the system.
+3. The end user receives an email, completes the verification flow, and can then reset their password and access the system.
 
 ---
 
