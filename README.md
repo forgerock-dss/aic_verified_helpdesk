@@ -1,5 +1,6 @@
 # aic_verified_helpdesk
 
+NOTE - AWAITING RELEASE OF [AME-32579](https://pingidentity.atlassian.net/browse/AME-32579) TO INTRODUCE DYNAMIC FEEDBACK FOR FRONT CHANNEL UPDATES
 ---
 
 ## Introduction
