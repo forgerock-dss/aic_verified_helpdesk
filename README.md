@@ -8,7 +8,7 @@ NOTE - AWAITING RELEASE OF [AME-32579](https://pingidentity.atlassian.net/browse
 This project provides a reference implementation of a Verified Helpdesk password reset pattern using PingOne Advanced Identity Cloud (P1AIC) integrated with PingOne Verify.
 
 The solution separates the helpdesk and end-user experiences into two coordinated journeys:
-	•	HelpDeskResetWithP1Verify – A front-channel journey where a helpdesk operative authenticates, passes an admin role check, captures the customer’s email address, and initiates a secure back-channel transaction.
+	•	HelpDeskResetWithP1Verify – A noSession mustRun front-channel journey where a helpdesk operative authenticates, passes an admin role check, captures the customer’s email address, and initiates a secure back-channel transaction.
 	•	UserPasswordResetWithP1Verify – A back-channel journey where the customer completes a PingOne Verify identity check before being allowed to reset their password.
 
 The helpdesk journey securely invokes the user journey using a back-channel transaction, sends a magic link via a templated email, and polls for completion status. The user journey performs identity normalisation, optional PingOne user creation, QR-based PingOne Verify evaluation, and enforces retry limits before permitting a password reset.
