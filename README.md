@@ -13,7 +13,7 @@ The solution separates the helpdesk and end-user experiences into two coordinate
 
 The helpdesk journey securely invokes the user journey using a back-channel transaction, sends a magic link via a templated email, and polls for completion status. The user journey performs identity normalisation, optional PingOne user creation, QR-based PingOne Verify evaluation, and enforces retry limits before permitting a password reset.
 
-This architecture ensures:
+This design ensures:
 * Role-based control over helpdesk operations
 * Strong identity verification before credential reset
 * Clear separation of operator and customer flows
