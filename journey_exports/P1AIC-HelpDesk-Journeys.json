@@ -1,8 +1,8 @@
 {
   "meta": {
-    "origin": "https://openam-<tenant>/platform/?realm=alpha#/journeys",
+    "origin": "https://openam-<tenant>.forgeblocks.com/platform/?realm=alpha#/journeys",
     "exportedBy": "darinder.shokar@pingidentity.com",
-    "exportDate": "2026-02-10T17:59:31.345Z",
+    "exportDate": "2026-02-11T10:27:35.846Z",
     "exportTool": "platform-admin ui tree export",
     "exportToolVersion": "1.0",
     "treesSelectedForExport": [
@@ -15,13 +15,13 @@
     "HelpDeskResetWithP1Verify": {
       "tree": {
         "_id": "HelpDeskResetWithP1Verify",
-        "_rev": "-1384189552",
+        "_rev": "-1384189562",
         "identityResource": "managed/alpha_user",
         "entryNodeId": "59401cf8-9618-4a58-b13c-d38d8515b73a",
         "innerTreeOnly": false,
         "description": "Help desk operative journey to invoke a user driven back channel journey to reset password via credential validation using PingOneVerify\npassword",
         "noSession": false,
-        "mustRun": false,
+        "mustRun": true,
         "enabled": true,
         "transactionalOnly": false,
         "uiConfig": {
@@ -473,8 +473,8 @@
         },
         "42b0bb39-1ec3-4e18-8160-432501506008": {
           "_id": "42b0bb39-1ec3-4e18-8160-432501506008",
-          "_rev": "1638478952",
-          "successUrl": "https://hub.pingidentity.com/verified-helpdesk",
+          "_rev": "-1580335396",
+          "successUrl": "/am/XUI/?realm=alpha&authIndexType=service&authIndexValue=HelpDeskResetWithP1Verify",
           "_type": {
             "_id": "SetSuccessUrlNode",
             "name": "Success URL",
@@ -565,7 +565,7 @@
           "createdBy": "id=80f5c192-7bf5-4c64-bc37-b7f5664ac7f3,ou=user,ou=am-config",
           "creationDate": 1770287518003,
           "lastModifiedBy": "id=80f5c192-7bf5-4c64-bc37-b7f5664ac7f3,ou=user,ou=am-config",
-          "lastModifiedDate": 1770746335300,
+          "lastModifiedDate": 1770805528106,
           "evaluatorVersion": "2.0"
         },
         "7925d6be-f29c-4e33-8f2b-766e88664bb3": {
@@ -579,7 +579,7 @@
           "createdBy": "id=80f5c192-7bf5-4c64-bc37-b7f5664ac7f3,ou=user,ou=am-config",
           "creationDate": 1770240165386,
           "lastModifiedBy": "id=80f5c192-7bf5-4c64-bc37-b7f5664ac7f3,ou=user,ou=am-config",
-          "lastModifiedDate": 1770746335310,
+          "lastModifiedDate": 1770805528107,
           "evaluatorVersion": "2.0"
         }
       },
