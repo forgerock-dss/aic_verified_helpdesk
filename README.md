@@ -9,15 +9,15 @@ This project provides a reference implementation of a Verified Helpdesk password
 
 The solution separates the helpdesk and end-user experiences into two coordinated journeys:
 * HelpDeskResetWithP1Verify – A noSession mustRun front-channel journey where a helpdesk operative authenticates, passes an admin role check, captures the customer’s email address, and initiates a secure back-channel transaction.
-	•	UserPasswordResetWithP1Verify – A back-channel journey where the customer completes a PingOne Verify identity check before being allowed to reset their password.
+* UserPasswordResetWithP1Verify – A back-channel journey where the customer completes a PingOne Verify identity check before being allowed to reset their password.
 
 The helpdesk journey securely invokes the user journey using a back-channel transaction, sends a magic link via a templated email, and polls for completion status. The user journey performs identity normalisation, optional PingOne user creation, QR-based PingOne Verify evaluation, and enforces retry limits before permitting a password reset.
 
 This architecture ensures:
-	•	Role-based control over helpdesk operations
-	•	Strong identity verification before credential reset
-	•	Clear separation of operator and customer flows
-	•	Secure orchestration using P1AIC back-channel capabilities
+* Role-based control over helpdesk operations
+* Strong identity verification before credential reset
+* Clear separation of operator and customer flows
+* Secure orchestration using P1AIC back-channel capabilities
 
 The implementation is intended as a reusable blueprint for organisations seeking to modernise helpdesk password reset processes with high assurance identity verification.
 
@@ -26,8 +26,8 @@ The implementation is intended as a reusable blueprint for organisations seeking
 ## Dependencies
 
 This project has the following dependencies:
-	•	Creation of a helpdesk user where `frUnindexedString1` is set to a value of admin
-   •  Creation of a customer user where a valid email address is set
+* Creation of a helpdesk user where `frUnindexedString1` is set to a value of admin
+* Creation of a customer user where a valid email address is set
 
 ---
 
