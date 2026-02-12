@@ -57,6 +57,10 @@ In this section, you will create a PingOne environment with **PingOne Verify** e
 4. Choose **Build your own solution**, select **PingOne Verify**, and click **Next**.
 5. Enter an environment name (for example:  
    `env-pingoneaic-mycompany-ew2-sandbox1`), select the region, and click **Finish**.
+6. Expand Identity Verification > Verify Policies > Either duplicate the Default Verify Policy or Edit to set Data Matching Given Name and Family Name to MEDIUM Confidence Threshold and set to Required as below
+
+![Verify Policy Configuration(images/verify_config.png?raw=true)
+
 
 ---
 
