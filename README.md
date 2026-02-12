@@ -43,7 +43,10 @@ To deploy this reference implementation, complete the following steps:
 6. Configure an email template  
 7. Test the implementation  
 
-### Note if you have already configured a PingOne environment, a worker application in PingOne and the PingOne Worker service in P1AIC find and replace the value for `pingOneWorker` in the journey export and skip setup steps 1-3.
+### Note:
+
+If you have already configured a PingOne environment, created a Worker application in PingOne, and set up the PingOne Worker service in P1AIC, simply update the `pingOneWorker` value in the journey export to match your existing configuration and skip setup steps 1–3.
+
 ---
 
 ## Set Up a PingOne Environment
