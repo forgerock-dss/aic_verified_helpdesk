@@ -159,5 +159,4 @@ Click the link below to reset your password:
 
 ## Demo Video
 
-Watch the full demo on  
-[YouTube](https://youtu.be/mXLkD0dogEI)
+Watch the full demo [here](https://youtu.be/mXLkD0dogEI)
