@@ -36,13 +36,14 @@ This project has the following dependencies:
 To deploy this reference implementation, complete the following steps:
 
 1. Set up a PingOne environment  
-2. Create a Worker Application in the PingOne tenant  
-3. Create the required Environment Secrets and Variables (ESVs) in P1AIC  
+2. Create a Worker application in the PingOne tenant  
+3. Create the PingOne Worker service in P1AIC 
 4. Import the custom nodes  
 5. Import the journeys  
 6. Configure an email template  
 7. Test the implementation  
 
+### Note if you have already configured a PingOne environment, a worker application in PingOne and the PingOne Worker service in P1AIC find and replace the value for `pingOneWorker` in the journey export and skip setup steps 1-3.
 ---
 
 ## Set Up a PingOne Environment
