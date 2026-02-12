@@ -61,7 +61,6 @@ In this section, you will create a PingOne environment with **PingOne Verify** e
 
 ![Verify Policy Configuration(images/verify_config.png?raw=true)
 
-
 ---
 
 ## Create a Worker Application in a P1AIC Tenant
