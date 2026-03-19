@@ -170,4 +170,4 @@ Have your government-issued ID ready.
 
 ## Demo Video
 
-Watch the full demo [here](https://youtu.be/mXLkD0dogEI)
+Watch the full demo [here](https://youtu.be/EgQqISC60OY)
