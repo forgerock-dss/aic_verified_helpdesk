@@ -3,7 +3,7 @@
 NOTE - AWAITING RELEASE OF [AME-32579](https://pingidentity.atlassian.net/browse/AME-32579) TO INTRODUCE DYNAMIC FEEDBACK FOR FRONT CHANNEL UPDATES
 ---
 
-## Introduction
+## Introduction 
 
 This project provides a reference implementation of a Verified Helpdesk password reset pattern using PingOne Advanced Identity Cloud (P1AIC) integrated with PingOne Verify.
 
