@@ -92,7 +92,7 @@ In this section, you will create a PingOne environment with **PingOne Verify** e
 2. In the P1AIC Admin UI, navigate to **Journeys → Custom Nodes**.
 3. Select **Import Nodes**, browse to the JSON file, and complete the import.
 
-The following five Custom Nodes will be imported:
+The following six Custom Nodes will be imported:
 
 | Node | Purpose |
 |-----|---------|
