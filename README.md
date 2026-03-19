@@ -1,23 +1,23 @@
 # aic_verified_helpdesk
 
-NOTE - AWAITING RELEASE OF [AME-32579](https://pingidentity.atlassian.net/browse/AME-32579) TO INTRODUCE DYNAMIC FEEDBACK FOR FRONT CHANNEL UPDATES
----
-
 ## Introduction 
 
 This project provides a reference implementation of a Verified Helpdesk password reset pattern using PingOne Advanced Identity Cloud (P1AIC) integrated with PingOne Verify.
 
 The solution separates the helpdesk and end-user experiences into two coordinated journeys:
-* **HelpDeskResetWithP1Verify** – A noSession mustRun front-channel journey where a helpdesk operative authenticates, passes an admin role check, captures the customer’s email address, and initiates a secure back-channel transaction.
-* **UserPasswordResetWithP1Verify** – A back-channel journey where the customer completes a PingOne Verify identity check before being allowed to reset their password.
 
-The helpdesk journey securely invokes the user journey using a back-channel transaction, sends a magic link via a templated email, and polls for completion status. The user journey performs identity normalisation, optional PingOne user creation, QR-based PingOne Verify evaluation, and enforces retry limits before permitting a password reset.
+* **HelpDeskResetWithP1Verify** – A noSession mustRun front-channel journey in which a helpdesk operative authenticates, passes an administrative role check, captures the customer’s email address, and initiates a secure back-channel transaction. The journey then receives dynamic status updates, providing real-time visibility into the user’s progress.
+
+* **UserPasswordResetWithP1Verify** – A back-channel journey in which the customer completes a PingOne Verify identity check before being allowed to reset their password. As the journey progresses, status updates are sent to the front-channel journey, providing real-time visibility to the helpdesk operative.
+
+The helpdesk journey securely invokes the user journey via a back-channel transaction, sends a magic link using a templated email, and polls for status and completion updates. The user journey performs identity normalisation, optionally creates a PingOne user, conducts a QR-based PingOne Verify evaluation and enforces retry limits before allowing a password reset.
 
 This design ensures:
 * Role-based control over helpdesk operations
 * Strong identity verification before credential reset
 * Clear separation of operator and customer flows
 * Secure orchestration using P1AIC back-channel capabilities
+* Real-time status updates, enabling the helpdesk operative to monitor the customer’s progress throughout the back-channel journey
 
 The implementation is intended as a reusable blueprint for organisations seeking to modernise helpdesk password reset processes with high assurance identity verification.
 
@@ -101,6 +101,7 @@ The following five Custom Nodes will be imported:
 | nodeState Normalizer | Removes `nodeState` prefixes |
 | Set BackChannel State Properties | Prepares attributes for the back-channel journey |
 | User Message to Display | Displays configurable messages to the user |
+| Set Front Channel Status | Sets the status which the front channel can read and display as the back channel journey progresses |
 
 ---
 
