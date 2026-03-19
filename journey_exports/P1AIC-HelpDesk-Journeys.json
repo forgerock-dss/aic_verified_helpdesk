@@ -1,8 +1,8 @@
 {
   "meta": {
-    "origin": "https://openam-darinder-ps.forgeblocks.com/platform/?realm=alpha#/journeys",
+    "origin": "https://openam-<tenant>/platform/?realm=alpha#/journeys",
     "exportedBy": "darinder.shokar@pingidentity.com",
-    "exportDate": "2026-02-12T10:05:11.415Z",
+    "exportDate": "2026-03-19T18:29:28.181Z",
     "exportTool": "platform-admin ui tree export",
     "exportToolVersion": "1.0",
     "treesSelectedForExport": [
@@ -15,7 +15,7 @@
     "UserPasswordResetWithP1Verify": {
       "tree": {
         "_id": "UserPasswordResetWithP1Verify",
-        "_rev": "-1758292043",
+        "_rev": "-600234745",
         "identityResource": "managed/alpha_user",
         "entryNodeId": "053298ae-d4df-41e4-83c0-b953f52fc77e",
         "innerTreeOnly": false,
@@ -25,89 +25,203 @@
         "enabled": true,
         "transactionalOnly": false,
         "uiConfig": {
-          "annotations": "{\"forNodes\":{},\"structural\":[{\"id\":\"264b385c-e259-4ce0-84c1-47562f98e9a4\",\"text\":\"Normalize sharedState attributes, check if the user exists in PingOne and if not create an anonymized user\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":42,\"y\":841.7666625976562,\"w\":460,\"h\":149},{\"id\":\"eed2af55-3fc8-4577-87d1-13ef37e3f5fa\",\"text\":\"Call PingOne Verify to execute the identity Check\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":615,\"y\":101.76666259765625,\"w\":293,\"h\":100},{\"id\":\"861bfc25-b857-45a9-934a-0d4e985f5778\",\"text\":\"If verification succeeds allow the customer to reset their password with retry in case the password does not meet policy requirements\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":1057,\"y\":83.76666259765625,\"w\":486,\"h\":127}]}",
+          "annotations": "{\"forNodes\":{},\"structural\":[{\"id\":\"264b385c-e259-4ce0-84c1-47562f98e9a4\",\"text\":\"Normalize sharedState attributes, check if the user exists in PingOne and if not create an anonymized user\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":32,\"y\":942.7666625976562,\"w\":460,\"h\":149},{\"id\":\"eed2af55-3fc8-4577-87d1-13ef37e3f5fa\",\"text\":\"Call PingOne Verify to execute the identity Check\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":615,\"y\":101.76666259765625,\"w\":293,\"h\":100},{\"id\":\"861bfc25-b857-45a9-934a-0d4e985f5778\",\"text\":\"If verification succeeds allow the customer to reset their password with retry in case the password does not meet policy requirements\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":1215,\"y\":83.76666259765625,\"w\":486,\"h\":127},{\"id\":\"8f09610a-860d-43ae-a27d-c70a825a517e\",\"text\":\"Update front channel status\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":411,\"y\":100.76666259765625,\"w\":127,\"h\":100},{\"id\":\"80bfb052-8b96-49da-bfd3-99f0d5718f9f\",\"text\":\"Update front channel status\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":999,\"y\":104.76666259765625,\"w\":129,\"h\":100},{\"id\":\"7b0e9932-60ba-42c6-b8db-0227883f1278\",\"text\":\"Update front channel status\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":1712,\"y\":302.76666259765625,\"w\":131,\"h\":100},{\"id\":\"1e62e69c-6617-4541-86c4-20958fe8f42f\",\"text\":\"Update front channel status with failure status\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":803,\"y\":971.7666625976562,\"w\":200,\"h\":100}]}",
           "categories": "[\"Registration\",\"aaa_workingset\",\"Secure\"]"
         },
         "nodes": {
-          "b70bd834-59ea-49cb-a9f5-19d63af63dce": {
-            "x": 1358,
-            "y": 232.515625,
+          "053298ae-d4df-41e4-83c0-b953f52fc77e": {
+            "x": 39,
+            "y": 335.76666259765625,
             "connections": {
-              "FAILURE": "2c8f5a8d-f0c2-4417-9238-7d3a61679b95",
-              "PATCHED": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
+              "Error": "25a4e7cd-c93a-4bfb-a284-06f44ee0f8d7",
+              "Next": "fa4d1027-5295-45e5-a4d4-a450f964a2ab"
             },
-            "nodeType": "PatchObjectNode",
-            "displayName": "Patch Object"
+            "nodeType": "designer-2520d6e218394f8881d16dd684e9ce60",
+            "displayName": "nodeState Normalizer",
+            "version": "1.0"
           },
-          "aaafed4d-6fdc-43db-9df7-5e8b71427a33": {
-            "x": 1021,
-            "y": 223.76666259765625,
+          "2c8f5a8d-f0c2-4417-9238-7d3a61679b95": {
+            "x": 1236.6611192491318,
+            "y": 409.2962917751736,
             "connections": {
-              "outcome": "b70bd834-59ea-49cb-a9f5-19d63af63dce"
+              "Reject": "25a4e7cd-c93a-4bfb-a284-06f44ee0f8d7",
+              "Retry": "aaafed4d-6fdc-43db-9df7-5e8b71427a33"
             },
-            "nodeType": "PageNode",
-            "displayName": "Page Node"
-          },
-          "b6ffcdc7-a37c-44d3-b87f-6b54c67a9052": {
-            "x": 53.140625,
-            "y": 704.515625,
-            "connections": {
-              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
-              "true": "4580bf88-d0e9-4340-9eb3-57243729fa67"
-            },
-            "nodeType": "PingOneCreateUserNode",
-            "displayName": "PingOne Create User"
-          },
-          "fa4d1027-5295-45e5-a4d4-a450f964a2ab": {
-            "x": 54,
-            "y": 388.515625,
-            "connections": {
-              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
-              "true": "75bea007-f04e-4cc5-b4ed-a95b6a7cc20e"
-            },
-            "nodeType": "IdentifyExistingUserNode",
-            "displayName": "Identify Existing User"
+            "nodeType": "RetryLimitDecisionNode",
+            "displayName": "Retry Limit Decision",
+            "version": "1.0"
           },
           "4580bf88-d0e9-4340-9eb3-57243729fa67": {
             "x": 629.140625,
             "y": 213.515625,
             "connections": {
-              "failureOutcome": "e301438c-0bd0-429c-ab0c-66126501069a",
-              "timeoutOutcome": "e301438c-0bd0-429c-ab0c-66126501069a",
-              "successOutcome": "aaafed4d-6fdc-43db-9df7-5e8b71427a33"
+              "failureOutcome": "25a4e7cd-c93a-4bfb-a284-06f44ee0f8d7",
+              "successOutcome": "ec529927-5f2b-4446-a35d-6202bc2e2a83",
+              "timeoutOutcome": "25a4e7cd-c93a-4bfb-a284-06f44ee0f8d7"
             },
             "nodeType": "PingOneVerifyEvaluationNode",
-            "displayName": "PingOne Verify Evaluation"
+            "displayName": "PingOne Verify Evaluation",
+            "version": "1.0"
           },
           "75bea007-f04e-4cc5-b4ed-a95b6a7cc20e": {
-            "x": 51,
-            "y": 543.7666625976562,
+            "x": 40,
+            "y": 638.7666625976562,
             "connections": {
-              "true": "4580bf88-d0e9-4340-9eb3-57243729fa67",
-              "false": "b6ffcdc7-a37c-44d3-b87f-6b54c67a9052"
+              "false": "b6ffcdc7-a37c-44d3-b87f-6b54c67a9052",
+              "true": "d00133c4-64c1-4282-bd92-0f7a89510c04"
             },
             "nodeType": "PingOneIdentityMatchNode",
-            "displayName": "PingOne Identity Match"
+            "displayName": "PingOne Identity Match",
+            "version": "1.0"
           },
-          "053298ae-d4df-41e4-83c0-b953f52fc77e": {
-            "x": 50,
-            "y": 240.76666259765625,
+          "aaafed4d-6fdc-43db-9df7-5e8b71427a33": {
+            "x": 1226,
+            "y": 238.76666259765625,
             "connections": {
-              "Next": "fa4d1027-5295-45e5-a4d4-a450f964a2ab",
+              "outcome": "b70bd834-59ea-49cb-a9f5-19d63af63dce"
+            },
+            "nodeType": "PageNode",
+            "displayName": "Page Node",
+            "version": "1.0"
+          },
+          "b6ffcdc7-a37c-44d3-b87f-6b54c67a9052": {
+            "x": 42.140625,
+            "y": 799.515625,
+            "connections": {
+              "false": "25a4e7cd-c93a-4bfb-a284-06f44ee0f8d7",
+              "true": "d00133c4-64c1-4282-bd92-0f7a89510c04"
+            },
+            "nodeType": "PingOneCreateUserNode",
+            "displayName": "PingOne Create User",
+            "version": "1.0"
+          },
+          "b70bd834-59ea-49cb-a9f5-19d63af63dce": {
+            "x": 1500,
+            "y": 258.515625,
+            "connections": {
+              "FAILURE": "2c8f5a8d-f0c2-4417-9238-7d3a61679b95",
+              "PATCHED": "3da55a98-139a-4c2d-9aa0-5c72285acc91"
+            },
+            "nodeType": "PatchObjectNode",
+            "displayName": "Patch Object",
+            "version": "1.0"
+          },
+          "fa4d1027-5295-45e5-a4d4-a450f964a2ab": {
+            "x": 43,
+            "y": 483.515625,
+            "connections": {
+              "false": "25a4e7cd-c93a-4bfb-a284-06f44ee0f8d7",
+              "true": "75bea007-f04e-4cc5-b4ed-a95b6a7cc20e"
+            },
+            "nodeType": "IdentifyExistingUserNode",
+            "displayName": "Identify Existing User",
+            "version": "1.0"
+          },
+          "d00133c4-64c1-4282-bd92-0f7a89510c04": {
+            "x": 335,
+            "y": 215.76666259765625,
+            "connections": {
+              "Success": "bb82c9a8-0fb8-4057-b1dd-a10d6485a037",
+              "Error": "25a4e7cd-c93a-4bfb-a284-06f44ee0f8d7"
+            },
+            "nodeType": "designer-e4a9455782434716b7f3e9540006d7f1",
+            "displayName": "Set Front Channel Status",
+            "version": "1.0"
+          },
+          "bb82c9a8-0fb8-4057-b1dd-a10d6485a037": {
+            "x": 348,
+            "y": 377.76666259765625,
+            "connections": {
+              "error": "25a4e7cd-c93a-4bfb-a284-06f44ee0f8d7",
+              "success": "4580bf88-d0e9-4340-9eb3-57243729fa67"
+            },
+            "nodeType": "BackchannelNotificationNode",
+            "displayName": "Backchannel Notification",
+            "version": "1.0"
+          },
+          "ec529927-5f2b-4446-a35d-6202bc2e2a83": {
+            "x": 933.2222222222222,
+            "y": 221.7407362196181,
+            "connections": {
+              "Success": "becd73f9-b883-4e87-b4e4-58e261188263",
+              "Error": "25a4e7cd-c93a-4bfb-a284-06f44ee0f8d7"
+            },
+            "nodeType": "designer-e4a9455782434716b7f3e9540006d7f1",
+            "displayName": "Set Front Channel Status",
+            "version": "1.0"
+          },
+          "89640601-c38f-4c66-b72f-4b6c603a2587": {
+            "x": 920.4444444444446,
+            "y": 803.4074028862848,
+            "connections": {
+              "success": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "error": "e301438c-0bd0-429c-ab0c-66126501069a"
+            },
+            "nodeType": "BackchannelNotificationNode",
+            "displayName": "Backchannel Notification",
+            "version": "1.0"
+          },
+          "becd73f9-b883-4e87-b4e4-58e261188263": {
+            "x": 937.7777777777778,
+            "y": 359.96295844184027,
+            "connections": {
+              "success": "aaafed4d-6fdc-43db-9df7-5e8b71427a33",
+              "error": "25a4e7cd-c93a-4bfb-a284-06f44ee0f8d7"
+            },
+            "nodeType": "BackchannelNotificationNode",
+            "displayName": "Backchannel Notification",
+            "version": "1.0"
+          },
+          "39117e33-3bc9-4a0c-9ddf-b8f65cde7cea": {
+            "x": 1597.0333455403647,
+            "y": 567.1851806640625,
+            "connections": {
+              "success": "79993f84-1487-4cc3-9eee-e6822635c161",
+              "error": "25a4e7cd-c93a-4bfb-a284-06f44ee0f8d7"
+            },
+            "nodeType": "BackchannelNotificationNode",
+            "displayName": "Backchannel Notification",
+            "version": "1.0"
+          },
+          "3da55a98-139a-4c2d-9aa0-5c72285acc91": {
+            "x": 1608.0333455403647,
+            "y": 415.1851806640625,
+            "connections": {
+              "Success": "39117e33-3bc9-4a0c-9ddf-b8f65cde7cea",
+              "Error": "25a4e7cd-c93a-4bfb-a284-06f44ee0f8d7"
+            },
+            "nodeType": "designer-e4a9455782434716b7f3e9540006d7f1",
+            "displayName": "Set Front Channel Status",
+            "version": "1.0"
+          },
+          "25a4e7cd-c93a-4bfb-a284-06f44ee0f8d7": {
+            "x": 622.1388990614149,
+            "y": 806.740736219618,
+            "connections": {
+              "Success": "89640601-c38f-4c66-b72f-4b6c603a2587",
               "Error": "e301438c-0bd0-429c-ab0c-66126501069a"
             },
-            "nodeType": "designer-2520d6e218394f8881d16dd684e9ce60",
-            "displayName": "nodeState Normalizer"
+            "nodeType": "designer-e4a9455782434716b7f3e9540006d7f1",
+            "displayName": "Set Front Channel Status",
+            "version": "1.0"
           },
-          "2c8f5a8d-f0c2-4417-9238-7d3a61679b95": {
-            "x": 1356.6611192491318,
-            "y": 410.2962917751736,
+          "79993f84-1487-4cc3-9eee-e6822635c161": {
+            "x": 1607.5,
+            "y": 742.2083282470703,
             "connections": {
-              "Retry": "aaafed4d-6fdc-43db-9df7-5e8b71427a33",
-              "Reject": "e301438c-0bd0-429c-ab0c-66126501069a"
+              "Success": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
             },
-            "nodeType": "RetryLimitDecisionNode",
-            "displayName": "Retry Limit Decision"
+            "nodeType": "designer-d0a055acaedd486b91fa88eddc6fccdb",
+            "displayName": "User Message to Display",
+            "version": "1.0"
+          },
+          "2f0e8fab-56f7-4d9e-9b64-6a80d5a7db1e": {
+            "x": 1439,
+            "y": 881.7666625976562,
+            "connections": {},
+            "nodeType": "designer-d0a055acaedd486b91fa88eddc6fccdb",
+            "displayName": "User Message to Display",
+            "version": "1.0"
           }
         },
         "staticNodes": {
@@ -116,120 +230,69 @@
             "y": 25
           },
           "70e691a5-1e33-4ac3-a356-e7b6d60d92e0": {
-            "x": 1716,
-            "y": 276
+            "x": 1935,
+            "y": 749
           },
           "e301438c-0bd0-429c-ab0c-66126501069a": {
-            "x": 974,
-            "y": 780
+            "x": 1932,
+            "y": 873
           }
         }
       },
       "nodes": {
-        "b70bd834-59ea-49cb-a9f5-19d63af63dce": {
-          "_id": "b70bd834-59ea-49cb-a9f5-19d63af63dce",
-          "_rev": "-899784245",
-          "identityResource": "managed/alpha_user",
-          "patchAsObject": false,
-          "ignoredFields": [],
-          "identityAttribute": "userName",
-          "_type": {
-            "_id": "PatchObjectNode",
-            "name": "Patch Object",
-            "collection": true,
-            "version": "1.0"
-          },
-          "_outcomes": [
-            {
-              "id": "PATCHED",
-              "displayName": "Patched"
-            },
-            {
-              "id": "FAILURE",
-              "displayName": "Failed"
-            }
-          ]
-        },
-        "aaafed4d-6fdc-43db-9df7-5e8b71427a33": {
-          "_id": "aaafed4d-6fdc-43db-9df7-5e8b71427a33",
-          "_rev": "-301274524",
-          "nodes": [
-            {
-              "_id": "a3630af4-f2c3-4d20-aaad-11879c9ff847",
-              "nodeType": "ValidatedPasswordNode",
-              "displayName": "Platform Password"
-            }
+        "053298ae-d4df-41e4-83c0-b953f52fc77e": {
+          "_id": "053298ae-d4df-41e4-83c0-b953f52fc77e",
+          "_rev": "-405848525",
+          "nodeStateAttributes": [
+            "customer._id",
+            "customer.mail",
+            "customer.userName"
           ],
-          "pageDescription": {
-            "en": "Enter new password"
-          },
-          "pageHeader": {
-            "en": "Reset Password"
-          },
           "_type": {
-            "_id": "PageNode",
-            "name": "Page Node",
+            "_id": "designer-2520d6e218394f8881d16dd684e9ce60",
+            "name": "nodeState Normalizer",
             "collection": true,
             "version": "1.0"
           },
           "_outcomes": [
             {
-              "id": "outcome",
-              "displayName": "Outcome"
+              "id": "Next",
+              "displayName": "Next"
+            },
+            {
+              "id": "Error",
+              "displayName": "Error"
             }
           ]
         },
-        "b6ffcdc7-a37c-44d3-b87f-6b54c67a9052": {
-          "_id": "b6ffcdc7-a37c-44d3-b87f-6b54c67a9052",
-          "_rev": "861805090",
-          "captureFailure": true,
-          "amIdentityAttribute": "fr-idm-uuid",
-          "pingOneWorker": "PingOne Worker AIC",
-          "anonymizedUser": false,
+        "2c8f5a8d-f0c2-4417-9238-7d3a61679b95": {
+          "_id": "2c8f5a8d-f0c2-4417-9238-7d3a61679b95",
+          "_rev": "-1210170426",
+          "incrementUserAttributeOnFailure": true,
+          "retryLimit": 3,
           "_type": {
-            "_id": "PingOneCreateUserNode",
-            "name": "PingOne Create User",
+            "_id": "RetryLimitDecisionNode",
+            "name": "Retry Limit Decision",
             "collection": true,
             "version": "1.0"
           },
           "_outcomes": [
             {
-              "id": "true",
-              "displayName": "True"
+              "id": "Retry",
+              "displayName": "Retry"
             },
             {
-              "id": "false",
-              "displayName": "False"
-            }
-          ]
-        },
-        "fa4d1027-5295-45e5-a4d4-a450f964a2ab": {
-          "_id": "fa4d1027-5295-45e5-a4d4-a450f964a2ab",
-          "_rev": "610058300",
-          "identityAttribute": "userName",
-          "identifier": "userName",
-          "_type": {
-            "_id": "IdentifyExistingUserNode",
-            "name": "Identify Existing User",
-            "collection": true,
-            "version": "1.0"
-          },
-          "_outcomes": [
-            {
-              "id": "true",
-              "displayName": "True"
-            },
-            {
-              "id": "false",
-              "displayName": "False"
+              "id": "Reject",
+              "displayName": "Reject"
             }
           ]
         },
         "4580bf88-d0e9-4340-9eb3-57243729fa67": {
           "_id": "4580bf88-d0e9-4340-9eb3-57243729fa67",
-          "_rev": "1529835078",
+          "_rev": "579833028",
           "captureFailure": true,
           "storeVerificationMetadata": true,
+          "autoRedirect": false,
           "allowSameDeviceVerification": true,
           "deliveryMethod": "QRCODE",
           "waitingMessage": {},
@@ -293,24 +356,122 @@
             }
           ]
         },
-        "053298ae-d4df-41e4-83c0-b953f52fc77e": {
-          "_id": "053298ae-d4df-41e4-83c0-b953f52fc77e",
-          "_rev": "-405848525",
-          "nodeStateAttributes": [
-            "customer._id",
-            "customer.mail",
-            "customer.userName"
+        "aaafed4d-6fdc-43db-9df7-5e8b71427a33": {
+          "_id": "aaafed4d-6fdc-43db-9df7-5e8b71427a33",
+          "_rev": "979829515",
+          "nodes": [
+            {
+              "_id": "a3630af4-f2c3-4d20-aaad-11879c9ff847",
+              "nodeType": "ValidatedPasswordNode",
+              "nodeVersion": "1.0",
+              "displayName": "Platform Password"
+            }
           ],
+          "pageDescription": {
+            "en": "Enter new password"
+          },
+          "pageHeader": {
+            "en": "Reset Password"
+          },
           "_type": {
-            "_id": "designer-2520d6e218394f8881d16dd684e9ce60",
-            "name": "nodeState Normalizer",
+            "_id": "PageNode",
+            "name": "Page Node",
             "collection": true,
             "version": "1.0"
           },
           "_outcomes": [
             {
-              "id": "Next",
-              "displayName": "Next"
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "b6ffcdc7-a37c-44d3-b87f-6b54c67a9052": {
+          "_id": "b6ffcdc7-a37c-44d3-b87f-6b54c67a9052",
+          "_rev": "861805090",
+          "captureFailure": true,
+          "amIdentityAttribute": "fr-idm-uuid",
+          "pingOneWorker": "PingOne Worker AIC",
+          "anonymizedUser": false,
+          "_type": {
+            "_id": "PingOneCreateUserNode",
+            "name": "PingOne Create User",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "b70bd834-59ea-49cb-a9f5-19d63af63dce": {
+          "_id": "b70bd834-59ea-49cb-a9f5-19d63af63dce",
+          "_rev": "-899784245",
+          "identityResource": "managed/alpha_user",
+          "patchAsObject": false,
+          "ignoredFields": [],
+          "identityAttribute": "userName",
+          "_type": {
+            "_id": "PatchObjectNode",
+            "name": "Patch Object",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "PATCHED",
+              "displayName": "Patched"
+            },
+            {
+              "id": "FAILURE",
+              "displayName": "Failed"
+            }
+          ]
+        },
+        "fa4d1027-5295-45e5-a4d4-a450f964a2ab": {
+          "_id": "fa4d1027-5295-45e5-a4d4-a450f964a2ab",
+          "_rev": "610058300",
+          "identityAttribute": "userName",
+          "identifier": "userName",
+          "_type": {
+            "_id": "IdentifyExistingUserNode",
+            "name": "Identify Existing User",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "d00133c4-64c1-4282-bd92-0f7a89510c04": {
+          "_id": "d00133c4-64c1-4282-bd92-0f7a89510c04",
+          "_rev": "1540422630",
+          "journeyStatusValue": "Beginning the user identity verification process",
+          "journeyStatusKey": "transaction:notify",
+          "journeyStatusProperty": "journeyStatus",
+          "_type": {
+            "_id": "designer-e4a9455782434716b7f3e9540006d7f1",
+            "name": "Set Front Channel Status",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "Success",
+              "displayName": "Success"
             },
             {
               "id": "Error",
@@ -318,25 +479,190 @@
             }
           ]
         },
-        "2c8f5a8d-f0c2-4417-9238-7d3a61679b95": {
-          "_id": "2c8f5a8d-f0c2-4417-9238-7d3a61679b95",
-          "_rev": "-1210170426",
-          "incrementUserAttributeOnFailure": true,
-          "retryLimit": 3,
+        "bb82c9a8-0fb8-4057-b1dd-a10d6485a037": {
+          "_id": "bb82c9a8-0fb8-4057-b1dd-a10d6485a037",
+          "_rev": "-471014276",
+          "dataKey": "transaction:notify",
           "_type": {
-            "_id": "RetryLimitDecisionNode",
-            "name": "Retry Limit Decision",
+            "_id": "BackchannelNotificationNode",
+            "name": "Backchannel Notification",
             "collection": true,
             "version": "1.0"
           },
           "_outcomes": [
             {
-              "id": "Retry",
-              "displayName": "Retry"
+              "id": "success",
+              "displayName": "Success"
             },
             {
-              "id": "Reject",
-              "displayName": "Reject"
+              "id": "error",
+              "displayName": "Error"
+            }
+          ]
+        },
+        "ec529927-5f2b-4446-a35d-6202bc2e2a83": {
+          "_id": "ec529927-5f2b-4446-a35d-6202bc2e2a83",
+          "_rev": "-573910579",
+          "journeyStatusValue": "User identity verification process succeeded. Allowing user to reset their password.",
+          "journeyStatusKey": "transaction:notify",
+          "journeyStatusProperty": "journeyStatus",
+          "_type": {
+            "_id": "designer-e4a9455782434716b7f3e9540006d7f1",
+            "name": "Set Front Channel Status",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "Success",
+              "displayName": "Success"
+            },
+            {
+              "id": "Error",
+              "displayName": "Error"
+            }
+          ]
+        },
+        "89640601-c38f-4c66-b72f-4b6c603a2587": {
+          "_id": "89640601-c38f-4c66-b72f-4b6c603a2587",
+          "_rev": "1792933919",
+          "dataKey": "transaction:notify",
+          "_type": {
+            "_id": "BackchannelNotificationNode",
+            "name": "Backchannel Notification",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "success",
+              "displayName": "Success"
+            },
+            {
+              "id": "error",
+              "displayName": "Error"
+            }
+          ]
+        },
+        "becd73f9-b883-4e87-b4e4-58e261188263": {
+          "_id": "becd73f9-b883-4e87-b4e4-58e261188263",
+          "_rev": "591444182",
+          "dataKey": "transaction:notify",
+          "_type": {
+            "_id": "BackchannelNotificationNode",
+            "name": "Backchannel Notification",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "success",
+              "displayName": "Success"
+            },
+            {
+              "id": "error",
+              "displayName": "Error"
+            }
+          ]
+        },
+        "39117e33-3bc9-4a0c-9ddf-b8f65cde7cea": {
+          "_id": "39117e33-3bc9-4a0c-9ddf-b8f65cde7cea",
+          "_rev": "-286003429",
+          "dataKey": "transaction:notify",
+          "_type": {
+            "_id": "BackchannelNotificationNode",
+            "name": "Backchannel Notification",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "success",
+              "displayName": "Success"
+            },
+            {
+              "id": "error",
+              "displayName": "Error"
+            }
+          ]
+        },
+        "3da55a98-139a-4c2d-9aa0-5c72285acc91": {
+          "_id": "3da55a98-139a-4c2d-9aa0-5c72285acc91",
+          "_rev": "1820248947",
+          "journeyStatusValue": "User password successfully updated.",
+          "journeyStatusKey": "transaction:notify",
+          "journeyStatusProperty": "journeyStatus",
+          "_type": {
+            "_id": "designer-e4a9455782434716b7f3e9540006d7f1",
+            "name": "Set Front Channel Status",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "Success",
+              "displayName": "Success"
+            },
+            {
+              "id": "Error",
+              "displayName": "Error"
+            }
+          ]
+        },
+        "25a4e7cd-c93a-4bfb-a284-06f44ee0f8d7": {
+          "_id": "25a4e7cd-c93a-4bfb-a284-06f44ee0f8d7",
+          "_rev": "-23633617",
+          "journeyStatusValue": "User identification journey failed.",
+          "journeyStatusKey": "transaction:notify",
+          "journeyStatusProperty": "journeyStatus",
+          "_type": {
+            "_id": "designer-e4a9455782434716b7f3e9540006d7f1",
+            "name": "Set Front Channel Status",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "Success",
+              "displayName": "Success"
+            },
+            {
+              "id": "Error",
+              "displayName": "Error"
+            }
+          ]
+        },
+        "79993f84-1487-4cc3-9eee-e6822635c161": {
+          "_id": "79993f84-1487-4cc3-9eee-e6822635c161",
+          "_rev": "1596717633",
+          "message": "Identity verification and password reset has been successfully completed.",
+          "_type": {
+            "_id": "designer-d0a055acaedd486b91fa88eddc6fccdb",
+            "name": "User Message to Display",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "Success",
+              "displayName": "Success"
+            }
+          ]
+        },
+        "2f0e8fab-56f7-4d9e-9b64-6a80d5a7db1e": {
+          "_id": "2f0e8fab-56f7-4d9e-9b64-6a80d5a7db1e",
+          "_rev": "1147378978",
+          "message": "Identity verification and password reset failed. Please try again..",
+          "_type": {
+            "_id": "designer-d0a055acaedd486b91fa88eddc6fccdb",
+            "name": "User Message to Display",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "Success",
+              "displayName": "Success"
             }
           ]
         }
@@ -345,8 +671,8 @@
         "a3630af4-f2c3-4d20-aaad-11879c9ff847": {
           "_id": "a3630af4-f2c3-4d20-aaad-11879c9ff847",
           "_rev": "1827018287",
-          "validateInput": false,
           "passwordAttribute": "password",
+          "validateInput": false,
           "_type": {
             "_id": "ValidatedPasswordNode",
             "name": "Platform Password",
@@ -371,7 +697,7 @@
     "HelpDeskResetWithP1Verify": {
       "tree": {
         "_id": "HelpDeskResetWithP1Verify",
-        "_rev": "-1384189562",
+        "_rev": "835327679",
         "identityResource": "managed/alpha_user",
         "entryNodeId": "59401cf8-9618-4a58-b13c-d38d8515b73a",
         "innerTreeOnly": false,
@@ -381,58 +707,64 @@
         "enabled": true,
         "transactionalOnly": false,
         "uiConfig": {
-          "categories": "[]",
-          "annotations": "{\"forNodes\":{},\"structural\":[{\"id\":\"3a57a9ae-460a-4a99-b5d6-137824f2f89d\",\"text\":\"Help desk user login with role check to ensure only admins can execute this journey\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":141,\"y\":514.7666625976562,\"w\":500,\"h\":100},{\"id\":\"694156fc-f352-4941-9b0d-7c4dd75d87a9\",\"text\":\"Request the customer's email address, find the user and set user attributes in nodeState for Back Channel journey consumption\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":759,\"y\":101.76666259765625,\"w\":500,\"h\":148},{\"id\":\"4b82f9b5-83ff-4a85-a55e-13432f1687cb\",\"text\":\"Initialize the Back Channel user journey and send the user a magic link to validate ownership and enable user journey access\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":1779,\"y\":29.76666259765625,\"w\":500,\"h\":137},{\"id\":\"4d911c63-7f13-484c-80ae-36db7743bfb1\",\"text\":\"Poll Back Channel Journey Status and on success display a completed message to the help desk operative and exit the journey\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":2361,\"y\":15.76666259765625,\"w\":500,\"h\":139}]}"
+          "annotations": "{\"forNodes\":{},\"structural\":[{\"id\":\"3a57a9ae-460a-4a99-b5d6-137824f2f89d\",\"text\":\"Help desk user login with role check to ensure only admins can execute this journey\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":141,\"y\":514.7666625976562,\"w\":500,\"h\":100},{\"id\":\"694156fc-f352-4941-9b0d-7c4dd75d87a9\",\"text\":\"Request the customer's email address, find the user and set user attributes in nodeState for Back Channel journey consumption\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":759,\"y\":101.76666259765625,\"w\":500,\"h\":148},{\"id\":\"4b82f9b5-83ff-4a85-a55e-13432f1687cb\",\"text\":\"Initialize the Back Channel user journey and send the user a magic link to validate ownership and enable user journey access\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":1779,\"y\":29.76666259765625,\"w\":500,\"h\":137},{\"id\":\"4d911c63-7f13-484c-80ae-36db7743bfb1\",\"text\":\"Poll the Back Channel Journey status and update this Front Channel journey to provide dynamic progress updates as the use journey advances\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":2345,\"y\":28.76666259765625,\"w\":500,\"h\":146},{\"id\":\"90528ad1-f635-4cee-b20c-ee279ff8aafd\",\"text\":\"On success display a completed message to the help desk operative and exit the journey\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":2607,\"y\":212.76666259765625,\"w\":349,\"h\":145}]}",
+          "categories": "[]"
         },
         "nodes": {
-          "59401cf8-9618-4a58-b13c-d38d8515b73a": {
-            "x": 32,
-            "y": 908.5,
-            "connections": {
-              "outcome": "2fb14c74-aaa5-4de9-a554-e691354b8f27"
-            },
-            "nodeType": "PageNode",
-            "displayName": "Page Node"
-          },
-          "bb5fcdbb-d2b2-439c-936c-410b5d6a2eb0": {
-            "x": 565,
-            "y": 626,
-            "connections": {
-              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
-              "true": "ec8b7018-39b1-4062-94ab-14ab28cab307"
-            },
-            "nodeType": "DataStoreDecisionNode",
-            "displayName": "Data Store Decision"
-          },
-          "cff41a52-70b6-4e68-9c6d-c473dcd6982a": {
-            "x": 1095,
-            "y": 265.5,
-            "connections": {
-              "User_Not_Found": "e301438c-0bd0-429c-ab0c-66126501069a",
-              "Error": "e301438c-0bd0-429c-ab0c-66126501069a",
-              "Next": "4c41752f-ebe9-4ce6-b8d1-ff5211a405d9"
-            },
-            "nodeType": "designer-83277447b5a24a6fa8a049a5ef90c8e8",
-            "displayName": "Get IDM User Attributes"
-          },
-          "ec8b7018-39b1-4062-94ab-14ab28cab307": {
-            "x": 796,
-            "y": 449,
-            "connections": {
-              "Next": "cff41a52-70b6-4e68-9c6d-c473dcd6982a"
-            },
-            "nodeType": "PageNode",
-            "displayName": "Page Node"
-          },
           "2fb14c74-aaa5-4de9-a554-e691354b8f27": {
             "x": 290,
             "y": 761,
             "connections": {
-              "true": "bb5fcdbb-d2b2-439c-936c-410b5d6a2eb0",
-              "false": "e301438c-0bd0-429c-ab0c-66126501069a"
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "true": "bb5fcdbb-d2b2-439c-936c-410b5d6a2eb0"
             },
             "nodeType": "QueryFilterDecisionNode",
-            "displayName": "Check User Is An Admin"
+            "displayName": "Check User Is An Admin",
+            "version": "1.0"
+          },
+          "34f7c0fa-3eca-4193-92de-feecc4bbaa98": {
+            "x": 2607,
+            "y": 376,
+            "connections": {
+              "Success": "42b0bb39-1ec3-4e18-8160-432501506008"
+            },
+            "nodeType": "designer-d0a055acaedd486b91fa88eddc6fccdb",
+            "displayName": "User Message to Display",
+            "version": "1.0"
+          },
+          "42b0bb39-1ec3-4e18-8160-432501506008": {
+            "x": 2613.25,
+            "y": 499.2083282470703,
+            "connections": {
+              "outcome": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
+            },
+            "nodeType": "SetSuccessUrlNode",
+            "displayName": "Success URL",
+            "version": "1.0"
+          },
+          "455b580c-0739-4b31-8283-b71d20ba0fc3": {
+            "x": 2340.3333333333335,
+            "y": 553.9444376627605,
+            "connections": {
+              "CONFIGURATION_FAILED": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "DONE": "a7d4541d-2f43-4c89-98e4-e910b5a7b7d7",
+              "EXITED": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "SPAM": "e301438c-0bd0-429c-ab0c-66126501069a"
+            },
+            "nodeType": "ConfigProviderNode",
+            "displayName": "Status Updater",
+            "version": "1.0"
+          },
+          "46a41750-cd0c-416d-b5f7-29f7b83d2e0a": {
+            "x": 2080,
+            "y": 209,
+            "connections": {
+              "Failed": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "Success": "a7d4541d-2f43-4c89-98e4-e910b5a7b7d7"
+            },
+            "nodeType": "ScriptedDecisionNode",
+            "displayName": "Send User Magiclink",
+            "version": "1.0"
           },
           "4c41752f-ebe9-4ce6-b8d1-ff5211a405d9": {
             "x": 1384,
@@ -442,41 +774,8 @@
               "Script Error": "e301438c-0bd0-429c-ab0c-66126501069a"
             },
             "nodeType": "designer-c6e6d89db5a74c778ca464ccc38455ca",
-            "displayName": "Set BackChannel State Properties"
-          },
-          "775ba709-5d02-4433-ad7c-899db5de16e9": {
-            "x": 1766,
-            "y": 186.5,
-            "connections": {
-              "unknown": "e301438c-0bd0-429c-ab0c-66126501069a",
-              "error": "e301438c-0bd0-429c-ab0c-66126501069a",
-              "created": "46a41750-cd0c-416d-b5f7-29f7b83d2e0a"
-            },
-            "nodeType": "BackChannelInitNode",
-            "displayName": "Backchannel Initialize"
-          },
-          "46a41750-cd0c-416d-b5f7-29f7b83d2e0a": {
-            "x": 2080,
-            "y": 209,
-            "connections": {
-              "Success": "a7d4541d-2f43-4c89-98e4-e910b5a7b7d7",
-              "Failed": "e301438c-0bd0-429c-ab0c-66126501069a"
-            },
-            "nodeType": "ScriptedDecisionNode",
-            "displayName": "Send User Magiclink"
-          },
-          "a7d4541d-2f43-4c89-98e4-e910b5a7b7d7": {
-            "x": 2345,
-            "y": 282,
-            "connections": {
-              "pending": "4ee72910-a11a-41b4-b739-86fef2b6092f",
-              "inprogress": "4ee72910-a11a-41b4-b739-86fef2b6092f",
-              "success": "34f7c0fa-3eca-4193-92de-feecc4bbaa98",
-              "unknown": "e301438c-0bd0-429c-ab0c-66126501069a",
-              "error": "e301438c-0bd0-429c-ab0c-66126501069a"
-            },
-            "nodeType": "BackChannelStatusNode",
-            "displayName": "Backchannel Status"
+            "displayName": "Set BackChannel State Properties",
+            "version": "1.0"
           },
           "4ee72910-a11a-41b4-b739-86fef2b6092f": {
             "x": 2346,
@@ -485,25 +784,77 @@
               "DONE": "a7d4541d-2f43-4c89-98e4-e910b5a7b7d7"
             },
             "nodeType": "PollingWaitNode",
-            "displayName": "Polling Wait Node"
+            "displayName": "Polling Wait Node",
+            "version": "1.0"
           },
-          "34f7c0fa-3eca-4193-92de-feecc4bbaa98": {
-            "x": 2601,
-            "y": 384,
+          "59401cf8-9618-4a58-b13c-d38d8515b73a": {
+            "x": 32,
+            "y": 908.5,
             "connections": {
-              "Success": "42b0bb39-1ec3-4e18-8160-432501506008"
+              "outcome": "2fb14c74-aaa5-4de9-a554-e691354b8f27"
             },
-            "nodeType": "designer-d0a055acaedd486b91fa88eddc6fccdb",
-            "displayName": "User Message to Display"
+            "nodeType": "PageNode",
+            "displayName": "Page Node",
+            "version": "1.0"
           },
-          "42b0bb39-1ec3-4e18-8160-432501506008": {
-            "x": 2603.25,
-            "y": 488.2083282470703,
+          "775ba709-5d02-4433-ad7c-899db5de16e9": {
+            "x": 1766,
+            "y": 186.5,
             "connections": {
-              "outcome": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
+              "created": "46a41750-cd0c-416d-b5f7-29f7b83d2e0a",
+              "error": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "unknown": "e301438c-0bd0-429c-ab0c-66126501069a"
             },
-            "nodeType": "SetSuccessUrlNode",
-            "displayName": "Success URL"
+            "nodeType": "BackChannelInitNode",
+            "displayName": "Backchannel Initialize",
+            "version": "1.0"
+          },
+          "a7d4541d-2f43-4c89-98e4-e910b5a7b7d7": {
+            "x": 2345,
+            "y": 282,
+            "connections": {
+              "error": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "inprogress": "455b580c-0739-4b31-8283-b71d20ba0fc3",
+              "pending": "4ee72910-a11a-41b4-b739-86fef2b6092f",
+              "success": "34f7c0fa-3eca-4193-92de-feecc4bbaa98",
+              "unknown": "e301438c-0bd0-429c-ab0c-66126501069a"
+            },
+            "nodeType": "BackChannelStatusNode",
+            "displayName": "Backchannel Status",
+            "version": "1.0"
+          },
+          "bb5fcdbb-d2b2-439c-936c-410b5d6a2eb0": {
+            "x": 565,
+            "y": 626,
+            "connections": {
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "true": "ec8b7018-39b1-4062-94ab-14ab28cab307"
+            },
+            "nodeType": "DataStoreDecisionNode",
+            "displayName": "Data Store Decision",
+            "version": "1.0"
+          },
+          "cff41a52-70b6-4e68-9c6d-c473dcd6982a": {
+            "x": 1095,
+            "y": 265.5,
+            "connections": {
+              "Error": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "Next": "4c41752f-ebe9-4ce6-b8d1-ff5211a405d9",
+              "User_Not_Found": "e301438c-0bd0-429c-ab0c-66126501069a"
+            },
+            "nodeType": "designer-83277447b5a24a6fa8a049a5ef90c8e8",
+            "displayName": "Get IDM User Attributes",
+            "version": "1.0"
+          },
+          "ec8b7018-39b1-4062-94ab-14ab28cab307": {
+            "x": 796,
+            "y": 449,
+            "connections": {
+              "Next": "cff41a52-70b6-4e68-9c6d-c473dcd6982a"
+            },
+            "nodeType": "PageNode",
+            "displayName": "Page Node",
+            "version": "1.0"
           }
         },
         "staticNodes": {
@@ -512,8 +863,8 @@
             "y": 231
           },
           "70e691a5-1e33-4ac3-a356-e7b6d60d92e0": {
-            "x": 2870,
-            "y": 493
+            "x": 2894,
+            "y": 507
           },
           "e301438c-0bd0-429c-ab0c-66126501069a": {
             "x": 1861,
@@ -522,124 +873,6 @@
         }
       },
       "nodes": {
-        "59401cf8-9618-4a58-b13c-d38d8515b73a": {
-          "_id": "59401cf8-9618-4a58-b13c-d38d8515b73a",
-          "_rev": "1692445332",
-          "nodes": [
-            {
-              "_id": "83458254-112c-442b-b954-2b82ffa818e1",
-              "nodeType": "ValidatedUsernameNode",
-              "displayName": "Platform Username"
-            },
-            {
-              "_id": "488817f0-3dce-4b35-8aa3-6966ce238253",
-              "nodeType": "ValidatedPasswordNode",
-              "displayName": "Platform Password"
-            }
-          ],
-          "pageDescription": {
-            "en": "Please Sign In"
-          },
-          "pageHeader": {
-            "en": "Help Desk Operative"
-          },
-          "_type": {
-            "_id": "PageNode",
-            "name": "Page Node",
-            "collection": true,
-            "version": "1.0"
-          },
-          "_outcomes": [
-            {
-              "id": "outcome",
-              "displayName": "Outcome"
-            }
-          ]
-        },
-        "bb5fcdbb-d2b2-439c-936c-410b5d6a2eb0": {
-          "_id": "bb5fcdbb-d2b2-439c-936c-410b5d6a2eb0",
-          "_rev": "-1417928836",
-          "_type": {
-            "_id": "DataStoreDecisionNode",
-            "name": "Data Store Decision",
-            "collection": true,
-            "version": "1.0"
-          },
-          "_outcomes": [
-            {
-              "id": "true",
-              "displayName": "True"
-            },
-            {
-              "id": "false",
-              "displayName": "False"
-            }
-          ]
-        },
-        "cff41a52-70b6-4e68-9c6d-c473dcd6982a": {
-          "_id": "cff41a52-70b6-4e68-9c6d-c473dcd6982a",
-          "_rev": "2021587186",
-          "prefixNodeState": true,
-          "attributeName": "mail",
-          "subsetAttributes": [
-            "_id",
-            "mail",
-            "userName"
-          ],
-          "realm": "alpha",
-          "allAttributes": false,
-          "prefixNodeStateValue": "customer",
-          "attributeValue": "customer.email",
-          "_type": {
-            "_id": "designer-83277447b5a24a6fa8a049a5ef90c8e8",
-            "name": "Get IDM User Attributes",
-            "collection": true,
-            "version": "1.0"
-          },
-          "_outcomes": [
-            {
-              "id": "Next",
-              "displayName": "Next"
-            },
-            {
-              "id": "User_Not_Found",
-              "displayName": "User_Not_Found"
-            },
-            {
-              "id": "Error",
-              "displayName": "Error"
-            }
-          ]
-        },
-        "ec8b7018-39b1-4062-94ab-14ab28cab307": {
-          "_id": "ec8b7018-39b1-4062-94ab-14ab28cab307",
-          "_rev": "-742169174",
-          "nodes": [
-            {
-              "_id": "d725b4f9-048b-4c48-a53c-cfe0ad811ce8",
-              "nodeType": "ScriptedDecisionNode",
-              "displayName": "End User Email Address"
-            }
-          ],
-          "pageDescription": {
-            "en": "Enter Customer Email Address"
-          },
-          "pageHeader": {
-            "en": "Customer Details"
-          },
-          "_type": {
-            "_id": "PageNode",
-            "name": "Page Node",
-            "collection": true,
-            "version": "1.0"
-          },
-          "_outcomes": [
-            {
-              "id": "Next",
-              "displayName": "Next"
-            }
-          ]
-        },
         "2fb14c74-aaa5-4de9-a554-e691354b8f27": {
           "_id": "2fb14c74-aaa5-4de9-a554-e691354b8f27",
           "_rev": "-1749576257",
@@ -662,59 +895,71 @@
             }
           ]
         },
-        "4c41752f-ebe9-4ce6-b8d1-ff5211a405d9": {
-          "_id": "4c41752f-ebe9-4ce6-b8d1-ff5211a405d9",
-          "_rev": "925722215",
-          "backChannelStateProperty": "backchannel:data",
-          "attributeListProperty": [
-            "customer.mail",
-            "customer._id",
-            "customer.userName"
-          ],
+        "34f7c0fa-3eca-4193-92de-feecc4bbaa98": {
+          "_id": "34f7c0fa-3eca-4193-92de-feecc4bbaa98",
+          "_rev": "-1600801477",
+          "message": "User identity verification and password reset process successfully completed.",
           "_type": {
-            "_id": "designer-c6e6d89db5a74c778ca464ccc38455ca",
-            "name": "Set BackChannel State Properties",
+            "_id": "designer-d0a055acaedd486b91fa88eddc6fccdb",
+            "name": "User Message to Display",
             "collection": true,
             "version": "1.0"
           },
           "_outcomes": [
             {
-              "id": "Next",
-              "displayName": "Next"
-            },
-            {
-              "id": "Script Error",
-              "displayName": "Script Error"
+              "id": "Success",
+              "displayName": "Success"
             }
           ]
         },
-        "775ba709-5d02-4433-ad7c-899db5de16e9": {
-          "_id": "775ba709-5d02-4433-ad7c-899db5de16e9",
-          "_rev": "1479913396",
-          "redirectUrlType": "GET",
-          "usernameKey": "customer._id",
-          "dataKey": "backchannel:data",
-          "idType": "USER",
-          "tree": "UserPasswordResetWithP1Verify",
-          "timeout": 600,
+        "42b0bb39-1ec3-4e18-8160-432501506008": {
+          "_id": "42b0bb39-1ec3-4e18-8160-432501506008",
+          "_rev": "-1580335396",
+          "successUrl": "/am/XUI/?realm=alpha&authIndexType=service&authIndexValue=HelpDeskResetWithP1Verify",
           "_type": {
-            "_id": "BackChannelInitNode",
-            "name": "Backchannel Initialize",
+            "_id": "SetSuccessUrlNode",
+            "name": "Success URL",
             "collection": true,
             "version": "1.0"
           },
           "_outcomes": [
             {
-              "id": "created",
-              "displayName": "Created"
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "455b580c-0739-4b31-8283-b71d20ba0fc3": {
+          "_id": "455b580c-0739-4b31-8283-b71d20ba0fc3",
+          "_rev": "2008916622",
+          "script": "0d4c2c3f-8e07-427d-8252-235b5f44042f",
+          "nodeVersion": 1,
+          "nodeType": "PollingWaitNode",
+          "scriptInputs": [
+            "*"
+          ],
+          "_type": {
+            "_id": "ConfigProviderNode",
+            "name": "Configuration Provider",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "DONE",
+              "displayName": "Done"
             },
             {
-              "id": "unknown",
-              "displayName": "Unknown Subject"
+              "id": "EXITED",
+              "displayName": "Exited"
             },
             {
-              "id": "error",
-              "displayName": "Error"
+              "id": "SPAM",
+              "displayName": "Spam"
+            },
+            {
+              "id": "CONFIGURATION_FAILED",
+              "displayName": "Configuration failure"
             }
           ]
         },
@@ -749,9 +994,128 @@
             }
           ]
         },
+        "4c41752f-ebe9-4ce6-b8d1-ff5211a405d9": {
+          "_id": "4c41752f-ebe9-4ce6-b8d1-ff5211a405d9",
+          "_rev": "925722215",
+          "backChannelStateProperty": "backchannel:data",
+          "attributeListProperty": [
+            "customer.mail",
+            "customer._id",
+            "customer.userName"
+          ],
+          "_type": {
+            "_id": "designer-c6e6d89db5a74c778ca464ccc38455ca",
+            "name": "Set BackChannel State Properties",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "Next",
+              "displayName": "Next"
+            },
+            {
+              "id": "Script Error",
+              "displayName": "Script Error"
+            }
+          ]
+        },
+        "4ee72910-a11a-41b4-b739-86fef2b6092f": {
+          "_id": "4ee72910-a11a-41b4-b739-86fef2b6092f",
+          "_rev": "1785712944",
+          "spamDetectionTolerance": 3,
+          "spamDetectionEnabled": false,
+          "exitMessage": {},
+          "waitingMessage": {
+            "en": "Waiting for the user to click the identity verification magic link email."
+          },
+          "secondsToWait": 5,
+          "exitable": false,
+          "_type": {
+            "_id": "PollingWaitNode",
+            "name": "Polling Wait Node",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "DONE",
+              "displayName": "Done"
+            }
+          ]
+        },
+        "59401cf8-9618-4a58-b13c-d38d8515b73a": {
+          "_id": "59401cf8-9618-4a58-b13c-d38d8515b73a",
+          "_rev": "-127647244",
+          "nodes": [
+            {
+              "_id": "83458254-112c-442b-b954-2b82ffa818e1",
+              "nodeType": "ValidatedUsernameNode",
+              "nodeVersion": "1.0",
+              "displayName": "Platform Username"
+            },
+            {
+              "_id": "488817f0-3dce-4b35-8aa3-6966ce238253",
+              "nodeType": "ValidatedPasswordNode",
+              "nodeVersion": "1.0",
+              "displayName": "Platform Password"
+            }
+          ],
+          "pageDescription": {
+            "en": "Please Sign In"
+          },
+          "pageHeader": {
+            "en": "Help Desk Operative"
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "775ba709-5d02-4433-ad7c-899db5de16e9": {
+          "_id": "775ba709-5d02-4433-ad7c-899db5de16e9",
+          "_rev": "125755332",
+          "redirectUrlType": "GET",
+          "usernameKey": "customer._id",
+          "dataKey": "backchannel:data",
+          "idType": "USER",
+          "allowRetry": true,
+          "timeout": 600,
+          "tree": "UserPasswordResetWithP1Verify",
+          "_type": {
+            "_id": "BackChannelInitNode",
+            "name": "Backchannel Initialize",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "created",
+              "displayName": "Created"
+            },
+            {
+              "id": "unknown",
+              "displayName": "Unknown Subject"
+            },
+            {
+              "id": "error",
+              "displayName": "Error"
+            }
+          ]
+        },
         "a7d4541d-2f43-4c89-98e4-e910b5a7b7d7": {
           "_id": "a7d4541d-2f43-4c89-98e4-e910b5a7b7d7",
-          "_rev": "1835105041",
+          "_rev": "1994855994",
+          "recordTransactionData": true,
+          "transactionDataKey": "transaction:data",
           "recordData": true,
           "_type": {
             "_id": "BackChannelStatusNode",
@@ -786,61 +1150,88 @@
             }
           ]
         },
-        "4ee72910-a11a-41b4-b739-86fef2b6092f": {
-          "_id": "4ee72910-a11a-41b4-b739-86fef2b6092f",
-          "_rev": "-1951417380",
-          "spamDetectionTolerance": 3,
-          "spamDetectionEnabled": false,
-          "exitMessage": {},
-          "waitingMessage": {
-            "en": "Waiting for user to complete the PingOne Verification and password reset flow"
-          },
-          "secondsToWait": 5,
-          "exitable": false,
+        "bb5fcdbb-d2b2-439c-936c-410b5d6a2eb0": {
+          "_id": "bb5fcdbb-d2b2-439c-936c-410b5d6a2eb0",
+          "_rev": "-1417928836",
           "_type": {
-            "_id": "PollingWaitNode",
-            "name": "Polling Wait Node",
+            "_id": "DataStoreDecisionNode",
+            "name": "Data Store Decision",
             "collection": true,
             "version": "1.0"
           },
           "_outcomes": [
             {
-              "id": "DONE",
-              "displayName": "Done"
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
             }
           ]
         },
-        "34f7c0fa-3eca-4193-92de-feecc4bbaa98": {
-          "_id": "34f7c0fa-3eca-4193-92de-feecc4bbaa98",
-          "_rev": "159950187",
-          "message": "Customer reset password proccess successfully completed.",
+        "cff41a52-70b6-4e68-9c6d-c473dcd6982a": {
+          "_id": "cff41a52-70b6-4e68-9c6d-c473dcd6982a",
+          "_rev": "2021587186",
+          "prefixNodeState": true,
+          "attributeName": "mail",
+          "realm": "alpha",
+          "subsetAttributes": [
+            "_id",
+            "mail",
+            "userName"
+          ],
+          "allAttributes": false,
+          "attributeValue": "customer.email",
+          "prefixNodeStateValue": "customer",
           "_type": {
-            "_id": "designer-d0a055acaedd486b91fa88eddc6fccdb",
-            "name": "User Message to Display",
+            "_id": "designer-83277447b5a24a6fa8a049a5ef90c8e8",
+            "name": "Get IDM User Attributes",
             "collection": true,
             "version": "1.0"
           },
           "_outcomes": [
             {
-              "id": "Success",
-              "displayName": "Success"
+              "id": "Next",
+              "displayName": "Next"
+            },
+            {
+              "id": "User_Not_Found",
+              "displayName": "User_Not_Found"
+            },
+            {
+              "id": "Error",
+              "displayName": "Error"
             }
           ]
         },
-        "42b0bb39-1ec3-4e18-8160-432501506008": {
-          "_id": "42b0bb39-1ec3-4e18-8160-432501506008",
-          "_rev": "-1580335396",
-          "successUrl": "/am/XUI/?realm=alpha&authIndexType=service&authIndexValue=HelpDeskResetWithP1Verify",
+        "ec8b7018-39b1-4062-94ab-14ab28cab307": {
+          "_id": "ec8b7018-39b1-4062-94ab-14ab28cab307",
+          "_rev": "270499953",
+          "nodes": [
+            {
+              "_id": "d725b4f9-048b-4c48-a53c-cfe0ad811ce8",
+              "nodeType": "ScriptedDecisionNode",
+              "nodeVersion": "1.0",
+              "displayName": "End User Email Address"
+            }
+          ],
+          "pageDescription": {
+            "en": "Enter Customer Email Address"
+          },
+          "pageHeader": {
+            "en": "Customer Details"
+          },
           "_type": {
-            "_id": "SetSuccessUrlNode",
-            "name": "Success URL",
+            "_id": "PageNode",
+            "name": "Page Node",
             "collection": true,
             "version": "1.0"
           },
           "_outcomes": [
             {
-              "id": "outcome",
-              "displayName": "Outcome"
+              "id": "Next",
+              "displayName": "Next"
             }
           ]
         }
@@ -867,8 +1258,8 @@
         "488817f0-3dce-4b35-8aa3-6966ce238253": {
           "_id": "488817f0-3dce-4b35-8aa3-6966ce238253",
           "_rev": "-258144949",
-          "validateInput": false,
           "passwordAttribute": "password",
+          "validateInput": false,
           "_type": {
             "_id": "ValidatedPasswordNode",
             "name": "Platform Password",
@@ -910,6 +1301,20 @@
         }
       },
       "scripts": {
+        "0d4c2c3f-8e07-427d-8252-235b5f44042f": {
+          "_id": "0d4c2c3f-8e07-427d-8252-235b5f44042f",
+          "name": "ds-front-channel-status-updater",
+          "description": "Updates the status message displayed by the Poll Wait Node as the back channel user journey progresses.",
+          "script": "\"/*\\n * Next Generation Config Provider Node Script\\n * Updates the front channel Poll Wait Node with status updates as the Back Channel Journey progresses\\n * Logic based on the stateKey value and if not present defaults to defaultStatus\\n */\\n\\nvar config = {\\n    stateKey: \\\"transaction:data\\\",\\n    statusKey: \\\"journeyStatus\\\",\\n    defaultStatus: \\\"The identity verification user journey has been initiated.\\\",\\n    secondsToWait: 3,\\n    spamDetectionEnabled: false,\\n    spamDetectionTolerance: 3,\\n    exitable: false,\\n    exitMessage: {}\\n};\\n\\nvar data = nodeState.get(config.stateKey);\\n\\nvar message = (\\n    data &&\\n    typeof data === \\\"object\\\" &&\\n    data[config.statusKey]\\n) ? data[config.statusKey] : config.defaultStatus;\\n\\nconfig = {\\n    secondsToWait: config.secondsToWait,\\n    spamDetectionEnabled: config.spamDetectionEnabled,\\n    spamDetectionTolerance: config.spamDetectionTolerance,\\n    waitingMessage: { en: message },\\n    exitable: config.exitable,\\n    exitMessage: config.exitMessage\\n};\"",
+          "default": false,
+          "language": "JAVASCRIPT",
+          "context": "CONFIG_PROVIDER_NODE_NEXT_GEN",
+          "createdBy": "id=80f5c192-7bf5-4c64-bc37-b7f5664ac7f3,ou=user,ou=am-config",
+          "creationDate": 1773920723964,
+          "lastModifiedBy": "id=80f5c192-7bf5-4c64-bc37-b7f5664ac7f3,ou=user,ou=am-config",
+          "lastModifiedDate": 1773938637983,
+          "evaluatorVersion": "2.0"
+        },
         "46c928e6-685d-433a-bd01-b68532d43557": {
           "_id": "46c928e6-685d-433a-bd01-b68532d43557",
           "name": "ds-customer-send-magic-link",
@@ -921,7 +1326,7 @@
           "createdBy": "id=80f5c192-7bf5-4c64-bc37-b7f5664ac7f3,ou=user,ou=am-config",
           "creationDate": 1770287518003,
           "lastModifiedBy": "id=80f5c192-7bf5-4c64-bc37-b7f5664ac7f3,ou=user,ou=am-config",
-          "lastModifiedDate": 1770805528106,
+          "lastModifiedDate": 1773938637983,
           "evaluatorVersion": "2.0"
         },
         "7925d6be-f29c-4e33-8f2b-766e88664bb3": {
@@ -935,7 +1340,7 @@
           "createdBy": "id=80f5c192-7bf5-4c64-bc37-b7f5664ac7f3,ou=user,ou=am-config",
           "creationDate": 1770240165386,
           "lastModifiedBy": "id=80f5c192-7bf5-4c64-bc37-b7f5664ac7f3,ou=user,ou=am-config",
-          "lastModifiedDate": 1770805528107,
+          "lastModifiedDate": 1773938637987,
           "evaluatorVersion": "2.0"
         }
       },
