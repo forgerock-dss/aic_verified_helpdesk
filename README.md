@@ -137,15 +137,17 @@ Configure an email template using the following documentation:
 
 Key configuration values:
 - **Template ID:** `verifyResetPassword`
-- **Subject:** `Ping Identity Reset Password`
+- **Subject:** `Ping Identity - User Identity Verification`
 - **Email body:**
 
 ```md
-### Verify email to reset password
+### Verify your identity to reset your password
 
 Hi {{object.givenName}}
 
-Click the link below to reset your password:
+Please click the link below to verify your identity before resetting your password.
+
+Have your government-issued ID ready.
 
 [Reset Password Link]({{object.resumeURI}})
 ```
