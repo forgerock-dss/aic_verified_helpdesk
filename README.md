@@ -96,12 +96,13 @@ The following five Custom Nodes will be imported:
 
 | Node | Purpose |
 |-----|---------|
-| Get IDM User Attributes | Retrieves user attributes from IDM and stores them in sharedState |
 | Debugger | Outputs authentication state for debugging |
+| Get IDM User Attributes | Retrieves user attributes from IDM and stores them in sharedState |
 | nodeState Normalizer | Removes `nodeState` prefixes |
 | Set BackChannel State Properties | Prepares attributes for the back-channel journey |
-| User Message to Display | Displays configurable messages to the user |
 | Set Front Channel Status | Sets the status which the front channel can read and display as the back channel journey progresses |
+| User Message to Display | Displays configurable messages to the user |
+
 
 ---
 
