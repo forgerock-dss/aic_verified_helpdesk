@@ -2,7 +2,7 @@
   "meta": {
     "origin": "https://openam-<tenant>/platform/?realm=alpha#/journeys",
     "exportedBy": "darinder.shokar@pingidentity.com",
-    "exportDate": "2026-03-19T18:29:28.181Z",
+    "exportDate": "2026-03-20T09:48:55.221Z",
     "exportTool": "platform-admin ui tree export",
     "exportToolVersion": "1.0",
     "treesSelectedForExport": [
@@ -697,7 +697,7 @@
     "HelpDeskResetWithP1Verify": {
       "tree": {
         "_id": "HelpDeskResetWithP1Verify",
-        "_rev": "835327679",
+        "_rev": "-1820008856",
         "identityResource": "managed/alpha_user",
         "entryNodeId": "59401cf8-9618-4a58-b13c-d38d8515b73a",
         "innerTreeOnly": false,
@@ -707,7 +707,7 @@
         "enabled": true,
         "transactionalOnly": false,
         "uiConfig": {
-          "annotations": "{\"forNodes\":{},\"structural\":[{\"id\":\"3a57a9ae-460a-4a99-b5d6-137824f2f89d\",\"text\":\"Help desk user login with role check to ensure only admins can execute this journey\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":141,\"y\":514.7666625976562,\"w\":500,\"h\":100},{\"id\":\"694156fc-f352-4941-9b0d-7c4dd75d87a9\",\"text\":\"Request the customer's email address, find the user and set user attributes in nodeState for Back Channel journey consumption\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":759,\"y\":101.76666259765625,\"w\":500,\"h\":148},{\"id\":\"4b82f9b5-83ff-4a85-a55e-13432f1687cb\",\"text\":\"Initialize the Back Channel user journey and send the user a magic link to validate ownership and enable user journey access\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":1779,\"y\":29.76666259765625,\"w\":500,\"h\":137},{\"id\":\"4d911c63-7f13-484c-80ae-36db7743bfb1\",\"text\":\"Poll the Back Channel Journey status and update this Front Channel journey to provide dynamic progress updates as the use journey advances\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":2345,\"y\":28.76666259765625,\"w\":500,\"h\":146},{\"id\":\"90528ad1-f635-4cee-b20c-ee279ff8aafd\",\"text\":\"On success display a completed message to the help desk operative and exit the journey\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":2607,\"y\":212.76666259765625,\"w\":349,\"h\":145}]}",
+          "annotations": "{\"forNodes\":{},\"structural\":[{\"id\":\"3a57a9ae-460a-4a99-b5d6-137824f2f89d\",\"text\":\"Help desk user login with role check to ensure only admins can execute this journey\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":141,\"y\":514.7666625976562,\"w\":500,\"h\":100},{\"id\":\"694156fc-f352-4941-9b0d-7c4dd75d87a9\",\"text\":\"Request the customer's email address, find the user and set user attributes in nodeState for Back Channel journey consumption\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":759,\"y\":101.76666259765625,\"w\":500,\"h\":148},{\"id\":\"4b82f9b5-83ff-4a85-a55e-13432f1687cb\",\"text\":\"Initialize the Back Channel user journey and send the user a magic link to validate ownership and enable user journey access\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":1887,\"y\":26.76666259765625,\"w\":500,\"h\":137},{\"id\":\"4d911c63-7f13-484c-80ae-36db7743bfb1\",\"text\":\"Poll the Back Channel Journey status and update this Front Channel journey to provide dynamic progress updates as the use journey advances\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":2588,\"y\":18.76666259765625,\"w\":500,\"h\":146},{\"id\":\"90528ad1-f635-4cee-b20c-ee279ff8aafd\",\"text\":\"On success display a completed message to the help desk operative and exit the journey\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":2842,\"y\":247.76666259765625,\"w\":349,\"h\":145},{\"id\":\"07a9da58-8381-4e0d-9fd3-302c96156f1d\",\"text\":\"Validate the user's firstname and lastname\",\"color\":\"yellow\",\"createdBy\":\"Darinder Shokar\",\"x\":1404,\"y\":34.76666259765625,\"w\":293,\"h\":132}]}",
           "categories": "[]"
         },
         "nodes": {
@@ -723,8 +723,8 @@
             "version": "1.0"
           },
           "34f7c0fa-3eca-4193-92de-feecc4bbaa98": {
-            "x": 2607,
-            "y": 376,
+            "x": 2847,
+            "y": 418,
             "connections": {
               "Success": "42b0bb39-1ec3-4e18-8160-432501506008"
             },
@@ -733,8 +733,8 @@
             "version": "1.0"
           },
           "42b0bb39-1ec3-4e18-8160-432501506008": {
-            "x": 2613.25,
-            "y": 499.2083282470703,
+            "x": 2853.25,
+            "y": 541.2083282470703,
             "connections": {
               "outcome": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
             },
@@ -743,8 +743,8 @@
             "version": "1.0"
           },
           "455b580c-0739-4b31-8283-b71d20ba0fc3": {
-            "x": 2340.3333333333335,
-            "y": 553.9444376627605,
+            "x": 2580.3333333333335,
+            "y": 595.9444376627605,
             "connections": {
               "CONFIGURATION_FAILED": "e301438c-0bd0-429c-ab0c-66126501069a",
               "DONE": "a7d4541d-2f43-4c89-98e4-e910b5a7b7d7",
@@ -756,8 +756,8 @@
             "version": "1.0"
           },
           "46a41750-cd0c-416d-b5f7-29f7b83d2e0a": {
-            "x": 2080,
-            "y": 209,
+            "x": 2300,
+            "y": 216,
             "connections": {
               "Failed": "e301438c-0bd0-429c-ab0c-66126501069a",
               "Success": "a7d4541d-2f43-4c89-98e4-e910b5a7b7d7"
@@ -767,8 +767,8 @@
             "version": "1.0"
           },
           "4c41752f-ebe9-4ce6-b8d1-ff5211a405d9": {
-            "x": 1384,
-            "y": 122,
+            "x": 1748,
+            "y": 211,
             "connections": {
               "Next": "775ba709-5d02-4433-ad7c-899db5de16e9",
               "Script Error": "e301438c-0bd0-429c-ab0c-66126501069a"
@@ -778,8 +778,8 @@
             "version": "1.0"
           },
           "4ee72910-a11a-41b4-b739-86fef2b6092f": {
-            "x": 2346,
-            "y": 182,
+            "x": 2586,
+            "y": 224,
             "connections": {
               "DONE": "a7d4541d-2f43-4c89-98e4-e910b5a7b7d7"
             },
@@ -798,8 +798,8 @@
             "version": "1.0"
           },
           "775ba709-5d02-4433-ad7c-899db5de16e9": {
-            "x": 1766,
-            "y": 186.5,
+            "x": 2046,
+            "y": 206.5,
             "connections": {
               "created": "46a41750-cd0c-416d-b5f7-29f7b83d2e0a",
               "error": "e301438c-0bd0-429c-ab0c-66126501069a",
@@ -810,8 +810,8 @@
             "version": "1.0"
           },
           "a7d4541d-2f43-4c89-98e4-e910b5a7b7d7": {
-            "x": 2345,
-            "y": 282,
+            "x": 2585,
+            "y": 324,
             "connections": {
               "error": "e301438c-0bd0-429c-ab0c-66126501069a",
               "inprogress": "455b580c-0739-4b31-8283-b71d20ba0fc3",
@@ -839,8 +839,8 @@
             "y": 265.5,
             "connections": {
               "Error": "e301438c-0bd0-429c-ab0c-66126501069a",
-              "Next": "4c41752f-ebe9-4ce6-b8d1-ff5211a405d9",
-              "User_Not_Found": "e301438c-0bd0-429c-ab0c-66126501069a"
+              "User_Not_Found": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "Next": "627ce188-3850-4573-9268-6931ecbab2ff"
             },
             "nodeType": "designer-83277447b5a24a6fa8a049a5ef90c8e8",
             "displayName": "Get IDM User Attributes",
@@ -855,6 +855,17 @@
             "nodeType": "PageNode",
             "displayName": "Page Node",
             "version": "1.0"
+          },
+          "627ce188-3850-4573-9268-6931ecbab2ff": {
+            "x": 1424,
+            "y": 208.76666259765625,
+            "connections": {
+              "true": "4c41752f-ebe9-4ce6-b8d1-ff5211a405d9",
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a"
+            },
+            "nodeType": "PageNode",
+            "displayName": "Page Node",
+            "version": "1.0"
           }
         },
         "staticNodes": {
@@ -863,8 +874,8 @@
             "y": 231
           },
           "70e691a5-1e33-4ac3-a356-e7b6d60d92e0": {
-            "x": 2894,
-            "y": 507
+            "x": 3119,
+            "y": 549
           },
           "e301438c-0bd0-429c-ab0c-66126501069a": {
             "x": 1861,
@@ -1172,14 +1183,16 @@
         },
         "cff41a52-70b6-4e68-9c6d-c473dcd6982a": {
           "_id": "cff41a52-70b6-4e68-9c6d-c473dcd6982a",
-          "_rev": "2021587186",
+          "_rev": "-102850877",
           "prefixNodeState": true,
           "attributeName": "mail",
           "realm": "alpha",
           "subsetAttributes": [
             "_id",
             "mail",
-            "userName"
+            "userName",
+            "givenName",
+            "sn"
           ],
           "allAttributes": false,
           "attributeValue": "customer.email",
@@ -1232,6 +1245,46 @@
             {
               "id": "Next",
               "displayName": "Next"
+            }
+          ]
+        },
+        "627ce188-3850-4573-9268-6931ecbab2ff": {
+          "_id": "627ce188-3850-4573-9268-6931ecbab2ff",
+          "_rev": "-145430455",
+          "nodes": [
+            {
+              "_id": "0cfb2b79-282c-4c12-8675-e16d8abd74c4",
+              "nodeType": "designer-1b565dccf3454f4b90c65516f90b6f64",
+              "nodeVersion": "1.0",
+              "displayName": "Display Node State Variables"
+            },
+            {
+              "_id": "1651f89b-3f57-48de-a605-0341716a85b9",
+              "nodeType": "MessageNode",
+              "nodeVersion": "1.0",
+              "displayName": "Message Node"
+            }
+          ],
+          "pageDescription": {
+            "en": "Confirm that the user’s first name and last name match the details shown below before proceeding."
+          },
+          "pageHeader": {
+            "en": "User Validation Check"
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
             }
           ]
         }
@@ -1296,6 +1349,57 @@
             {
               "id": "Next",
               "displayName": "Next"
+            }
+          ]
+        },
+        "0cfb2b79-282c-4c12-8675-e16d8abd74c4": {
+          "_id": "0cfb2b79-282c-4c12-8675-e16d8abd74c4",
+          "_rev": "30433812",
+          "nodeStateVariable": [
+            "customer.givenName",
+            "customer.sn",
+            "customer.mail"
+          ],
+          "objectAttributes": false,
+          "_type": {
+            "_id": "designer-1b565dccf3454f4b90c65516f90b6f64",
+            "name": "Display Node State Variables",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "Next",
+              "displayName": "Next"
+            }
+          ]
+        },
+        "1651f89b-3f57-48de-a605-0341716a85b9": {
+          "_id": "1651f89b-3f57-48de-a605-0341716a85b9",
+          "_rev": "-273104682",
+          "messageYes": {
+            "en": "Confirmed"
+          },
+          "message": {
+            "en": "Did the user confirm?"
+          },
+          "messageNo": {
+            "en": "Not Confirmed"
+          },
+          "_type": {
+            "_id": "MessageNode",
+            "name": "Message Node",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
             }
           ]
         }
