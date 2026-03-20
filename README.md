@@ -92,11 +92,12 @@ In this section, you will create a PingOne environment with **PingOne Verify** e
 2. In the P1AIC Admin UI, navigate to **Journeys → Custom Nodes**.
 3. Select **Import Nodes**, browse to the JSON file, and complete the import.
 
-The following six Custom Nodes will be imported:
+The following seven Custom Nodes will be imported:
 
 | Node | Purpose |
 |-----|---------|
 | Debugger | Outputs authentication state for debugging |
+| Display Node State Variables |
 | Get IDM User Attributes | Retrieves user attributes from IDM and stores them in sharedState |
 | nodeState Normalizer | Removes `nodeState` prefixes |
 | Set BackChannel State Properties | Prepares attributes for the back-channel journey |
