@@ -97,7 +97,7 @@ The following seven Custom Nodes will be imported:
 | Node | Purpose |
 |-----|---------|
 | Debugger | Outputs authentication state for debugging |
-| Display Node State Variables |
+| Display Node State Variables | Display variable from nodeState on-screen |
 | Get IDM User Attributes | Retrieves user attributes from IDM and stores them in sharedState |
 | nodeState Normalizer | Removes `nodeState` prefixes |
 | Set BackChannel State Properties | Prepares attributes for the back-channel journey |
