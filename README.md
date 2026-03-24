@@ -62,6 +62,7 @@ In this section, you will create a PingOne environment with **PingOne Verify** e
 5. Enter an environment name (for example:  
    `env-pingoneaic-mycompany-ew2-sandbox1`), select the region, and click **Finish**.
 6. Expand Identity Verification > Verify Policies > Either duplicate the Default Verify Policy or Edit to set Data Matching Given Name and Family Name to MEDIUM Confidence Threshold and set to Required as below
+7. Note the policy ID - e.g. `ce21e365-b691-46d4-806b-a8e597e19cd1`
 
 ![Verify Policy Configuration](images/verify_config.png?raw=true)
 
@@ -120,6 +121,8 @@ The following journeys will be created:
 |--------|---------|
 | HelpDeskResetWithP1Verify | Front-channel helpdesk journey |
 | UserPasswordResetWithP1Verify | Back-channel user verification and password reset journey |
+
+4. Within the `UserPasswordResetWithP1Verify` journey, click the `PingOne Verify Evaluation` node and update the Verify policy ID recorded above, e.g.  `ce21e365-b691-46d4-806b-a8e597e19cd1` and hit Save.
 
 ### Journey Diagrams
 
