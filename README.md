@@ -122,7 +122,7 @@ The following journeys will be created:
 | HelpDeskResetWithP1Verify | Front-channel helpdesk journey |
 | UserPasswordResetWithP1Verify | Back-channel user verification and password reset journey |
 
-4. Within the `UserPasswordResetWithP1Verify` journey, click the `PingOne Verify Evaluation` node and update the Verify policy ID recorded above, e.g.  `ce21e365-b691-46d4-806b-a8e597e19cd1` and hit Save.
+4. Within the `UserPasswordResetWithP1Verify` journey, click the `PingOne Verify Evaluation` node and update the Verify policy ID with the one noted in the "Set Up a PingOne Environment" above. For example: `ce21e365-b691-46d4-806b-a8e597e19cd1` and hit Save.
 
 ### Journey Diagrams
 
